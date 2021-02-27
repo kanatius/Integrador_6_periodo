@@ -409,3 +409,5 @@ notes.txt
 ~$*.doc*
 
 *.tmp
+
+!documentação/brmodelo3/modelo_logico.xml
