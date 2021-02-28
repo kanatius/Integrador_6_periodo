@@ -411,3 +411,5 @@ notes.txt
 *.tmp
 
 !documentação/brmodelo3/modelo_logico.xml
+
+integrador_6_periodo/env.py
