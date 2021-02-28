@@ -1,0 +1,10 @@
+asgiref==3.3.1
+autopep8==1.5.5
+Django==3.1.7
+psycopg2==2.8.6
+pycodestyle==2.6.0
+pytz==2021.1
+sqlparse==0.4.1
+toml==0.10.2
+unicode==2.8
+unicodedata2==13.0.0.post2
