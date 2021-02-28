@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<DIAGRAMA ID="1" TIPO="tpLogico" UniversalUnicID="514D-4-9929-B3-6958-45-7E">
+<DIAGRAMA ID="1" TIPO="tpLogico" UniversalUnicID="A9AD-10-6F31-E6-4067-BE-29">
 <InfoDiagrama ID="1">
 <Versao Valor="3.2.0"/>
 <Autores/>
@@ -10,7 +10,7 @@
 <Alinhamento_h Valor="60"/>
 <Zoom Valor="100"/>
 <Fonte Estilo="1" Nome="Arial" Tamanho="12"/>
-<Localizacao Left="0" Top="100"/>
+<Localizacao Left="73" Top="100"/>
 <Realce Valor="false"/>
 <SeparatorSQL Valor=";"/>
 <Prefixo Valor=""/>
@@ -175,7 +175,7 @@
 <Unique Valor="false"/>
 </Campo>
 <Campo>
-<Texto>id_cidade</Texto>
+<Texto>id_endereco</Texto>
 <Tipo>int</Tipo>
 <Complemento/>
 <Dicionario/>
@@ -379,13 +379,13 @@
 <Largura Valor="1"/>
 <Ligacoes PontaA="4" PontaB="5"/>
 <Pontos>
-<Ponto Left="466" Top="182"/>
+<Ponto Left="465" Top="182"/>
 <Ponto Left="541" Top="182"/>
 <Ponto Left="541" Top="182"/>
 <Ponto Left="617" Top="182"/>
 </Pontos>
 <LogicoCardinalidade ID="33">
-<Bounds Height="15" Left="476" Top="169" Width="35"/>
+<Bounds Height="15" Left="475" Top="169" Width="35"/>
 <DisablePainted Valor="false"/>
 <Texto>Cardinalidade_1</Texto>
 <Observacao/>
@@ -462,7 +462,7 @@
 </LogicoCardinalidade>
 </LogicoLinha>
 <Tabela ID="43">
-<Bounds Height="216" Left="299" Top="368" Width="195"/>
+<Bounds Height="194" Left="299" Top="368" Width="195"/>
 <DisablePainted Valor="false"/>
 <Texto>Endereco</Texto>
 <Observacao/>
@@ -539,16 +539,6 @@
 <Unique Valor="false"/>
 </Campo>
 <Campo>
-<Texto>id_imovel</Texto>
-<Tipo>int</Tipo>
-<Complemento/>
-<Dicionario/>
-<Observacao/>
-<Key Valor="false"/>
-<Fkey Valor="true"/>
-<Unique Valor="false"/>
-</Campo>
-<Campo>
 <Texto>id_cidade</Texto>
 <Tipo>int</Tipo>
 <Complemento/>
@@ -580,7 +570,7 @@
 <DdlOnUpdate/>
 <DdlOnDelete/>
 <LigacaoParaOrigem ID="-1"/>
-<ConstraintOrigem CamposDestino="[5, 6]" CamposOrigem="[-1, -1]" ID="-1,-1"/>
+<ConstraintOrigem CamposDestino="[-1, 5]" CamposOrigem="[-1, -1]" ID="-1,-1"/>
 </Constraint>
 </Constraints>
 </Tabela>
@@ -646,13 +636,13 @@
 <Largura Valor="1"/>
 <Ligacoes PontaA="4" PontaB="43"/>
 <Pontos>
-<Ponto Left="387" Top="282"/>
+<Ponto Left="387" Top="281"/>
 <Ponto Left="387" Top="323"/>
 <Ponto Left="387" Top="323"/>
 <Ponto Left="387" Top="364"/>
 </Pontos>
 <LogicoCardinalidade ID="59">
-<Bounds Height="15" Left="354" Top="292" Width="35"/>
+<Bounds Height="15" Left="354" Top="291" Width="35"/>
 <DisablePainted Valor="false"/>
 <Texto>Cardinalidade_7</Texto>
 <Observacao/>
