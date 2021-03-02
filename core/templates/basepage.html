@@ -10,7 +10,7 @@
   <title>HomePage</title>
 
   <!-- Css Bootstrap -->
-  <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
 
   <!-- popper -->
   <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/popper.min.js' %}"></script>
@@ -18,8 +18,15 @@
   <!-- Bootstrap JS -->
   <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js' %}"></script>
 
+  <!-- React -->
+  <script src="{% static 'React/react.development.js' %}"></script>
+  <script src="{% static 'React/react-dom.development.js' %}"></script>
+  <script src="{% static 'React/babel.min.js' %}"></script>
+
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static 'css/index.css'%}">
+  <link rel="stylesheet" href="{% static 'css/basepage.css'%}">
+
+  {% block head %}{% endblock %}
 </head>
 
 <body>
@@ -31,13 +38,12 @@
     </div>
   </nav>
 
-  {% block page %}
+  <div class="container" id="sheet">
+    {% block page %}
 
+    {% endblock %}
+  </div>
 
-
-
-  {% endblock %}
-  
 </body>
 
 </html>
