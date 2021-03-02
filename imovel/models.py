@@ -14,7 +14,7 @@ class Cidade(models.Model):
     
 
     def save(self, *args, **kwargs):
-        self.nome_sem_acento = removeAccentsOfString(self.nome)
+        self.nome_sem_acentos = removeAccentsOfString(self.nome)
         self.estado_sem_acentos = removeAccentsOfString(self.estado)
         super(Cidade, self).save(*args, **kwargs)
 
