@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import Usuario
 from core.utils import removeAccentsOfString
 # Create your models here.
-
+from django.core.files.storage import default_storage
 
 class Cidade(models.Model):
 
@@ -25,11 +25,23 @@ class Imovel(models.Model):
     tipo = models.CharField(max_length=55)
     ativo = models.BooleanField(default=True)
 
+    def delete(self):
 
-class ImovelImagens(models.Model):
+        imagens = self.imagens.all()
+
+        for img in imagens:
+            img.delete()
+        
+        super(Imovel, self).delete()
+
+class ImovelImagem(models.Model):
 
     uri_arquivo = models.FileField()
-    imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE)
+    imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE, related_name="imagens")
+
+    def delete(self):
+        default_storage.delete(str(self.uri_arquivo)) #remove arquivo da pasta
+        super(ImovelImagem, self).delete()
 
 
 class Endereco(models.Model):
