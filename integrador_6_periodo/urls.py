@@ -20,5 +20,6 @@ urlpatterns = [
     path("", include("core.urls")),
     path("accounts/", include("accounts.urls")),
     path('admin/', admin.site.urls),
-    path('imovel/', include("imovel.urls"))
+    path('imovel/', include("imovel.urls")),
+    path("api/", include("api.urls"))
 ]
