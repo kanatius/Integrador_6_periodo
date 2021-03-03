@@ -1,16 +1,26 @@
 {% extends 'basepage.html' %}
 
+{% load static%}
+
+{% block head %}
+
+{% endblock %}
+
+
 {% block page %}
 
-<form action="{% url 'accounts:login'%}" method="post">
-    {% csrf_token %}
-    Email:
-    <input type="email" name="email" id=""><br>
-    Senha:
-    <input type="password" name="password" id="">
+Digite o nome da Cidade
+<input id="cidade">
 
-    <input type="submit" value="Enviar">
-</form>
+<div id="div-select">
+
+</div>
+<div id="div-select-cidade">
+
+</div>
+
+<script type="text/babel" src="{% static 'js/index_react.js' %}"></script>
+
 
 
 {% endblock %}
