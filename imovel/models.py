@@ -23,7 +23,8 @@ class Imovel(models.Model):
 
     descricao = models.CharField(max_length=500)
     tipo = models.CharField(max_length=55)
-    ativo = models.BooleanField(default=True)
+    status = models.CharField(max_length=55)
+    valor_mensal = models.IntegerField()
 
     def delete(self):
 
