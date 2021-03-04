@@ -1,17 +1,12 @@
 @import '_templateColors.scss';
 
-body{
-    margin: 0px;
-    background-color: $serenity;
-}
 
-.navbar{
-    background-color: $navy-blue;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0px;
+#btn-enviar{
+    background-color: $navy-blue !important;
+    color: white;
+    margin: 10px;
+    margin-top: 20px;
 }
-
-nav #img-logo{
-    width: 220px;
+#btn-enviar:hover{
+    opacity: 90%;
 }

@@ -1,17 +1,12 @@
-body {
-  margin: 0px;
-  background-color: #d0dbdc;
+#btn-enviar {
+  background-color: #324c65 !important;
+  color: white;
+  margin: 10px;
+  margin-top: 20px;
 }
 
-.navbar {
-  background-color: #324c65;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0px;
-}
-
-nav #img-logo {
-  width: 220px;
+#btn-enviar:hover {
+  opacity: 90%;
 }
 
 /*# sourceMappingURL=index.css.map */

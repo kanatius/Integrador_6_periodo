@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  background-color: #d0dbdc;
+  background-color: rgba(208, 219, 220, 0.75) !important;
 }
 
 .navbar {
@@ -18,7 +18,7 @@ nav #img-logo {
   background-color: white;
   margin-top: 100px;
   border-radius: 3px;
-  padding: 20px;
+  padding: 30px;
 }
 
 /*# sourceMappingURL=basepage.css.map */
