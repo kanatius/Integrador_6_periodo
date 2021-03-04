@@ -260,7 +260,7 @@ class SelectWrapper extends React.Component {
 
     render() {
         return (
-            <form>
+            <div>
                 <input type="text" required hidden name="cidade" id="input-cidade" />
                 <input type="text" required hidden name="estado" id="input-estado" />
                 <div className="container">
@@ -278,7 +278,7 @@ class SelectWrapper extends React.Component {
                 <div className="text-end">
                     <button className="btn" id="btn-enviar" type="submit">Procurar Imóveis</button>
                 </div>
-            </form>
+            </div>
         )
     }
 }
