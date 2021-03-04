@@ -109,45 +109,54 @@ const estadoOptions = [{
 ];
 
 var linkRoot = ""
+var maxTime = 3000;
+var time_counter = 0;
+var delay = 50;
+
+function convertOptionsCidadesFromAPI(cidades) {
+    let options = [];
+
+    cidades.forEach(cidade => {
+        options.push({
+            label: cidade.fields.nome,
+            value: cidade.fields.nome
+        })
+    });
+    return options;
+}
 
 class SelectEstado extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.selectCidadeRef = props.selectCidadeRef;
+        this.state = {
+            idSelect : props.idSelectEstado
+        }
     }
 
     onchangeEstado = (option) => {
 
-        linkRoot = "/api/" + option.value + "/cidades/a";
-        
+        let nomeCidadePadrao = "a"
+
+        linkRoot = "/api/" + option.value + "/cidades/" + nomeCidadePadrao + "?limit=20";
+
         var cidades = []
         //variável para acessar o select
         //dentro da função done o this muda
         var this_ = this;
         $.get(linkRoot)
             .done(function (response) {
-                let options = [];
+                cidades = convertOptionsCidadesFromAPI(response);
+            });
 
-                response.forEach(cidade => {
-                    options.push({
-                        label : cidade.fields.nome,
-                        value : cidade.fields.nome
-                    })
-                });
-                cidades = options; 
-        });
-
-        var maxTime = 3000;
-        var time_counter = 0;
-        var delay = 50;
-
-        var interval = setInterval(function(){
-            if (cidades.length > 0){
+        var interval = setInterval(function () {
+            if (cidades.length > 0) {
                 this_.selectCidadeRef.current.updateOptions(cidades);
+                this_.selectCidadeRef.current.updateEstado(option.value);
                 clearInterval(interval);
             }
-            if(time_counter > maxTime){
+            if (time_counter > maxTime) {
                 clearInterval(interval);
             }
             time_counter += delay;
@@ -155,9 +164,9 @@ class SelectEstado extends React.Component {
     }
 
     render() {
-        return <Select onChange = {
-            this.onchangeEstado
-        }
+        return <Select 
+        id= {this.state.idSelect}
+        onChange = {this.onchangeEstado}
         options = {
             estadoOptions
         }
@@ -170,52 +179,101 @@ class SelectCidade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : "select cidade",
-            options : [{
-                value: "askldmlas",
-                label : "alksndkasn"
-            }]
+            options: [],
+            estado: "",
+            idSelect : props.idSelectCidade
         }
     }
 
-    printOptions = () => {
-        console.log(this.state.options);
-        console.log(this.state.name);
+    onInputChange = inputText => {
+
+        linkRoot = "/api/" + this.state.estado + "/cidades/" + inputText + "?limit=20";
+
+        var cidades = []
+        //variável para acessar o select
+        //dentro da função done o this muda
+        var this_ = this;
+        
+        if (inputText.length < 2 || this.state.estado == ""){
+            return
+        }
+        console.log(linkRoot);
+
+        $.get(linkRoot)
+            .done(function (response) {
+                cidades = convertOptionsCidadesFromAPI(response);
+            });
+
+        var interval = setInterval(function () {
+            if (cidades.length > 0) {
+                this_.updateOptions(cidades);
+                time_counter = 0;
+                clearInterval(interval); 
+            }
+            if (time_counter > maxTime) {
+                time_counter = 0;
+                clearInterval(interval);
+                time_counter = 0;
+            }
+            time_counter += delay;
+        }, delay);
+      };
+
+    // printOptions = () => {
+    //     console.log(this.state.options);
+    //     console.log(this.state.name);
+    // }
+
+    updateOptions(options) {
+        this.setState({
+            options: options
+        });
     }
 
-    updateOptions(options){
-        this.setState({options : options});
-        console.log(this.state);
+    updateEstado(estado){
+        this.state.estado = estado;
     }
 
     render() {
-        return <Select onChange={this.printOptions} options={this.state.options} />;
+        return <Select 
+        id= {this.state.idSelect}
+        // onChange = {this.printOptions} 
+        onInputChange={this.onInputChange}
+        options = {this.state.options}
+        />;
     }
 }
 
 class SelectWrapper extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            cidadeOptions: [{
-                label : "TESTE CIDADE",
-                value : "asd"
-            }]
-        };
-        this.selectCidadeRef = React.createRef();
-    }
+        constructor(props) {
+            super(props);
+            this.state = {
+                idSelectCidade : props.idSelectCidade,
+                idSelectEstado : props.idSelectEstado
+            };
+            this.selectCidadeRef = React.createRef();
+        }
 
-    render() {
-        return (<div>
-            <SelectEstado selectCidadeRef={this.selectCidadeRef} />
-            <SelectCidade ref={this.selectCidadeRef}/>
-        </div>)
-    }
-}
+        render() {
+            return ( <div>
+                <label>Selecione o Estado</label>
+                <SelectEstado idSelectEstado={this.props.idSelectEstado} selectCidadeRef = {
+                    this.selectCidadeRef
+                }
+                />
+                <label>Selecione a cidade</label>
+                <SelectCidade idSelectCidade={this.props.idSelectCidade} ref = {
+                    this.selectCidadeRef
+                }
+                /> </div>)
+            }
+        }
 
 
-ReactDOM.render( <
-    SelectWrapper / > ,
+ReactDOM.render( <SelectWrapper  
+    idSelectCidade={"select-cidade"}
+    idSelectEstado={"select-estado"}  
+    /> ,
     document.getElementById('div-select')
 );
