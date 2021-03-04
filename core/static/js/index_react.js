@@ -261,8 +261,8 @@ class SelectWrapper extends React.Component {
     render() {
         return (
             <form>
-                <input type="text" hidden name="cidade" id="input-cidade" />
-                <input type="text" hidden name="estado" id="input-estado" />
+                <input type="text" required hidden name="cidade" id="input-cidade" />
+                <input type="text" required hidden name="estado" id="input-estado" />
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12 col-md-12 col-lg-8">
