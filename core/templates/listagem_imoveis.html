@@ -1,0 +1,19 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/babel" src="{% static 'js/listagem_imoveis.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/listagem_imoveis.css' %}">
+{% endblock %}
+
+
+{% block page %}
+<hr/>
+<h4 id="titulo">Imóveis disponíveis na cidade de {{cidade.nome}}-{{cidade.estado_sigla}}</h4>
+<hr id="hr-bottom"/>
+<input type="text" id="cidade" value="{{cidade.nome}}" hidden>
+<input type="text" id="estado" value="{{cidade.estado_sigla}}" hidden>
+<div id="imoveis-list">
+
+</div>
+{% endblock %}

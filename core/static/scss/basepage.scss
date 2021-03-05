@@ -1,0 +1,25 @@
+@import '_templateColors.scss';
+
+body{
+    margin: 0px;
+    background-color: rgba($serenity, .75) !important;
+}
+
+.navbar{
+    background-color: $navy-blue !important;
+    // background-color: $brown !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+nav #img-logo{
+    width: 220px;
+}
+
+#sheet{
+    background-color: white;
+    margin-top: 100px;
+    border-radius: 3px;
+    padding: 30px;
+}

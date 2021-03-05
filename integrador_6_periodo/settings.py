@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'core',
     'accounts',
     'imovel',
@@ -46,8 +47,9 @@ INSTALLED_APPS = [
     #estiliza forms
     "bootstrap4",
 
+    'imovel',
+    'api'
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,12 +136,19 @@ LOGOUT_REDIRECT_URL = 'index'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
 MEDIA_URL = "/files/"
+
+IMOVEIS_IMAGENS_DIR = os.path.join(MEDIA_ROOT, "imagensImoveis/")
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    IMOVEIS_IMAGENS_DIR,
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 

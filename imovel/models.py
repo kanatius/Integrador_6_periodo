@@ -3,6 +3,8 @@ from accounts.models import Usuario
 from core.utils import removeAccentsOfString
 # Create your models here.
 from django.core.files.storage import default_storage
+from integrador_6_periodo.settings import IMOVEIS_IMAGENS_DIR
+import os
 
 class Cidade(models.Model):
 
@@ -14,7 +16,7 @@ class Cidade(models.Model):
     
 
     def save(self, *args, **kwargs):
-        self.nome_sem_acento = removeAccentsOfString(self.nome)
+        self.nome_sem_acentos = removeAccentsOfString(self.nome)
         self.estado_sem_acentos = removeAccentsOfString(self.estado)
         super(Cidade, self).save(*args, **kwargs)
 
@@ -23,7 +25,8 @@ class Imovel(models.Model):
 
     descricao = models.CharField(max_length=500)
     tipo = models.CharField(max_length=55)
-    ativo = models.BooleanField(default=True)
+    status = models.CharField(max_length=55)
+    valor_mensal = models.IntegerField()
 
     def delete(self):
 
@@ -36,11 +39,12 @@ class Imovel(models.Model):
 
 class ImovelImagem(models.Model):
 
-    uri_arquivo = models.FileField()
+    uri_arquivo = models.FileField(upload_to=IMOVEIS_IMAGENS_DIR)
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE, related_name="imagens")
 
     def delete(self):
-        default_storage.delete(str(self.uri_arquivo)) #remove arquivo da pasta
+        filepath = os.path.join(IMOVEIS_IMAGENS_DIR, self.uri_arquivo.name)
+        os.remove(filepath) #remove arquivo da pasta
         super(ImovelImagem, self).delete()
 
 
