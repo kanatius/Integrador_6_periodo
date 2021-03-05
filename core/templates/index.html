@@ -2,15 +2,7 @@
 
 {% block page %}
 
-<form action="{% url 'accounts:login'%}" method="post">
-    {% csrf_token %}
-    Email:
-    <input type="email" name="email" id=""><br>
-    Senha:
-    <input type="password" name="password" id="">
-
-    <input type="submit" value="Enviar">
-</form>
-
+<h1>Index</h1>
+    <a><i class="fas fa-air-freshener"></i></a>
 
 {% endblock %}

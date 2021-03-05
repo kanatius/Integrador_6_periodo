@@ -13,5 +13,17 @@ body {
 nav #img-logo {
   width: 220px;
 }
+.card-signin{
+  border: 0 !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1) !important;
+}
+div #logo-login{
+  width: 200px;
+}
 
+.card-signin .form-control:focus {
+    border-color: #004777 !important;
+    box-shadow: 2px 2px #004777 !important;
+}
 /*# sourceMappingURL=index.css.map */

@@ -41,8 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'accounts',
-    'imovel'
+    'imovel',
+
+    #estiliza forms
+    "bootstrap4",
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,6 +126,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Login e Logout#
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -133,3 +142,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
 MEDIA_URL = "/files/"
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+#email
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '4186a04d856121'
+EMAIL_HOST_PASSWORD = '3a4202a3862009'
+EMAIL_PORT = '2525'

@@ -30,14 +30,15 @@ class UsuarioManager(BaseUserManager):
             raise ValueError('Superuser precisa ter is_staff=True')
         return self._create_user(email, password, **extra_fields)
 
+
 class Usuario(AbstractUser):
-    USERNAME_FIELD = 'email'
+
     email = models.EmailField("email", unique=True)
-    
     nome = models.CharField(max_length=45)
     sobrenome = models.CharField(max_length=45)
     telefone = models.CharField(max_length=45)
 
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # removes email from REQUIRED_FIELDS
 
     def __str__(self):
