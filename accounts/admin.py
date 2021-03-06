@@ -6,6 +6,7 @@ from .forms import *
 # Register your models here.
 UserAdmin.fieldsets += ('Custom', {'fields': ('nome', 'sobrenome', 'telefone')}),
 
+
 class CustomUserAdmin(UserAdmin):
     add_form = CreateUserForm
     form = ChangeUserForm

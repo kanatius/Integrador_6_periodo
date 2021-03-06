@@ -6,7 +6,8 @@ from .models import Usuario
 class CreateUserForm(UserCreationForm):
 
     class Meta:
-        model: Usuario
+        model = Usuario
+        fields = ['username', 'nome', 'telefone','password1', 'password2']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -17,6 +18,7 @@ class CreateUserForm(UserCreationForm):
             user.save()
 
         return user
+
 
 class ChangeUserForm(UserChangeForm):
 
