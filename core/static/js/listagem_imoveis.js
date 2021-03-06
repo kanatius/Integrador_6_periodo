@@ -114,7 +114,7 @@ class ListaImoveis extends React.Component {
 var listaIMoveis = React.createElement(ListaImoveis);
 
 $(window).scroll(function () {
-    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 400) {
         document.getElementById("carregar-mais").click();
     }
 });
