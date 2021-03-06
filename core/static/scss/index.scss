@@ -1,12 +1,13 @@
 @import '_templateColors.scss';
 
 
-#btn-enviar{
+#btn-enviar {
     background-color: $navy-blue !important;
     color: white;
     margin: 10px;
     margin-top: 20px;
 }
-#btn-enviar:hover{
+
+#btn-enviar:hover {
     opacity: 90%;
 }

@@ -4,7 +4,7 @@
 {% block extrahead %}
     <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles -->
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="/static/css/login.css">
 {% endblock %}
 
 {# Load CSS and JavaScript #}
@@ -84,7 +84,6 @@
                                 <!-- /.col -->
                             </div>
                         </form>
-                        {% csrf_token %}
                         <p class="mb-1">
                             <a href="/accounts/reset_password/">Esqueci a minha senha!</a>
                         </p>

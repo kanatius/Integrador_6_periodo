@@ -21,4 +21,9 @@ nav #img-logo {
   padding: 30px;
 }
 
+html,
+body {
+  height: 100% !important;
+}
+
 /*# sourceMappingURL=basepage.css.map */
