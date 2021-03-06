@@ -288,5 +288,5 @@ ReactDOM.render(<SelectWrapper
     idSelectCidade={"select-cidade"}
     idSelectEstado={"select-estado"}
 />,
-    document.getElementById('div-select')
+    document.getElementById('form-busca')
 );

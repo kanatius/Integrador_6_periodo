@@ -4,20 +4,26 @@
 <html lang="pt">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HomePage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    {% block extrahead %}{% endblock %}
+    <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles icon-->
 
+    <!-- Css Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
   <!-- Css Bootstrap -->
   <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
 
-  <!-- popper -->
-  <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/popper.min.js' %}"></script>
+    <!-- popper -->
+    <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/popper.min.js' %}"></script>
 
-  <!-- Bootstrap JS -->
-  <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js' %}"></script>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <script src="{% static 'React/react.development.js' %}"></script>
   <script src="{% static 'React/react-dom.development.js' %}"></script>
 
@@ -44,21 +50,23 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <!-- <img id="img-logo" src="{% static 'imagens/logo_branca_sem_fundo.png' %}" alt="" class="d-inline-block align-top"> -->
-        <img id="img-logo" src="/static/imagens/logo_branca_sem_fundo.png" alt="" class="d-inline-block align-top">
-      </a>
+        <a class="navbar-brand" href="/">
+            <img id="img-logo" src="{% static 'imagens/Alugaqui - Logo-02.png' %}" alt=""
+                 class="d-inline-block align-top">
+        </a>
     </div>
-  </nav>
+</nav>
 
-  <div class="container" id="sheet">
+<div class="container" id="sheet">
     {% block page %}
 
-    {% endblock %}
-  </div>
 
+
+
+  {% endblock %}
+</div>
 </body>
 
 </html>

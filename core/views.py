@@ -1,9 +1,10 @@
+from django.views.generic import TemplateView
+
 from django.shortcuts import render, redirect
 from imovel.models import Cidade
 
-# Create your views here.
-def index_page(request):
-    return render(request, "index.html")
+class index_page(TemplateView):
+    template_name = 'index.html'
 
 def imoveis_page(request):
 

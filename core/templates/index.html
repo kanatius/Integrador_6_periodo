@@ -10,12 +10,9 @@
 {% block page %}
 <h4>Buscar imóveis</h4>
 <br>
-<form action="{% url 'core:imoveis_page' %}" id="div-select">
-
+<form action="{% url 'core:imoveis_page' %}" id="form-busca">
 </form>
 
-<script type="text/babel" src="{% static 'js/index_react.js' %}"></script>
-
-
+<script type="text/babel" src="/static/js/index_react.js"></script>
 
 {% endblock %}
