@@ -118,8 +118,8 @@ function convertOptionsCidadesFromAPI(cidades) {
 
     cidades.forEach(cidade => {
         options.push({
-            label: cidade.fields.nome,
-            value: cidade.fields.nome
+            label: cidade.nome,
+            value: cidade.nome
         })
     });
     return options;
