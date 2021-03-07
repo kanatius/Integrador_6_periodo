@@ -34,6 +34,14 @@ def get_imoveis(request, UF, city_name):
 
     # data = serializers.serialize("json", imoveis, use_natural_foreign_keys=True, use_natural_primary_keys=True)
 
+    if request.GET.get("offset"):
+        offset = int(request.GET.get("offset"))
+        imoveis = imoveis[offset:]
+    
+    if request.GET.get("limit"):
+        limit = int(request.GET.get("limit"))
+        imoveis = imoveis[:limit]
+
     data = ImovelSerializer(imoveis, many=True).data
 
     data = json.dumps(data)
