@@ -1,10 +1,10 @@
 var nextId = 50;
-const imoveisTeste = [
-    
-]
+
+var estado = document.getElementById("estado").value.toString();
+var cidade = document.getElementById("cidade").value.toString();
 
 //link root para a chamada para carregar os imóveis disponíveis na cidade
-var linkRoot = "/api/imoveis/" + document.getElementById("estado").value.toString() + "/" + document.getElementById("cidade").value.toString()
+var linkRoot = "/api/imoveis/" + estado + "/" + cidade
 
 //carrega os primeiros dados da página
 $(window).ready(function(){
@@ -21,7 +21,8 @@ class ListaImoveis extends React.Component {
             imoveis: [],
             carregando : false,
             qtdImoveisPorVez : 1,
-            carregouTodos : false
+            carregouTodos : false,
+            msgDivFinal : ""
         };
     }
 
@@ -63,15 +64,26 @@ class ListaImoveis extends React.Component {
         //offset sempre será o valor dos imóveis já carregados
         let offset = this.state.imoveis.length
 
+        this.setState({
+            msgDivFinal : "Carregando"
+        });
+
         $.get(linkRoot + "?offset="+ offset +"&limit=" + this.state.qtdImoveisPorVez).done(function(imoveis){
             
             //adiciona os imóveis carregados
             _this.state.imoveis.push(...imoveis);
 
+            _this.setState({
+                msgDivFinal : ""
+            });
+
             if(imoveis.length < _this.state.qtdImoveisPorVez){
                 //se a quantidade de imoveis retornados for menor que a quantidade solicitada
                 //define como true
                 _this.state.carregouTodos = true;
+                _this.setState({
+                    msgDivFinal : "Não há mais imóveis disponíveis para locação na cidade de " + cidade + "-" + estado
+                })
             }
 
             _this.setState({imoveis: _this.state.imoveis});
@@ -85,6 +97,11 @@ class ListaImoveis extends React.Component {
             <div id="div-cards" className="row">
                 {this.state.imoveis.map(this.getCard)}
                 <button id="carregar-mais" className="btn" hidden onClick={this.carregarMais.bind(this)}>Carregar mais</button>
+                <div style={ { "text-align" : "center" } }>
+                    <br/>
+                    {this.state.msgDivFinal}
+                </div>
+                <div></div>
             </div>
         );
     }
@@ -93,9 +110,9 @@ class ListaImoveis extends React.Component {
 var listaIMoveis = React.createElement(ListaImoveis);
 
 $(window).scroll(function () {
-    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 150) {
+    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 400) {
         document.getElementById("carregar-mais").click();
     }
 });
 
-ReactDOM.render(listaIMoveis, document.getElementById("imoveis-list"));
+ReactDOM.render(<ListaImoveis />, document.getElementById("imoveis-list"));
