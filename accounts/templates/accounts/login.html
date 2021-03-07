@@ -2,9 +2,10 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block extrahead %}
-    <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles -->
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/login.css">
+<link href="{% static 'css/all.css' %}" rel="stylesheet">
+<!--load all styles -->
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/static/css/login.css">
 {% endblock %}
 
 {# Load CSS and JavaScript #}
@@ -16,92 +17,92 @@
 
 {% block page %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto card-div">
-                <div class="card card-signin my-5 shadow rounded-3">
-                    <div class="row justify-content-center px-3 mt-3 mb-1"><img id="logo-login"
-                                                                                src="{% static 'imagens/Alugaqui - Logo-01.png' %}">
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title text-center font-weight-light">Acesse sua conta</h5>
-                        <form method="post">
-                            {% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto card-div" id="div-card-login">
+            <div class="card card-signin my-5 shadow rounded-3">
+                <div class="row justify-content-center px-3 mt-3 mb-1">
+                    <img id="logo-login" src="{% static 'imagens/Alugaqui - Logo-01.png' %}">
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title text-center font-weight-light">Acesse sua conta</h5>
+                    <form method="post">
+                        {% csrf_token %}
 
-                            {% if form.errors %}
-                                {% for field in form %}
-                                    {% for error in field.errors %}
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>{{ field.name|title }} {{ error|escape }}</strong>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+                        {% if form.errors %}
+                        {% for field in form %}
+                        {% for error in field.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ field.name|title }} {{ error|escape }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                                    {% endfor %}
-                                {% endfor %}
-                                {% for error in form.non_field_errors %}
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ error|escape }}</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ error|escape }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
 
-                            <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Email" name="username">
-                                <p class="errorlist">{{ form.errors.username }}</p>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-envelope"></span>
-                                    </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email" name="username">
+                            <p class="errorlist">{{ form.errors.username }}</p>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
-                            <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Password" name="password">
-                                <p class="errorlist">{{ form.errors.password }}</p>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <p class="errorlist">{{ form.errors.password }}</p>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-8">
-                                    {#                                    <div class="icheck-primary">#}
-                                    {#                                        <input type="checkbox" id="remember">#}
-                                    {#                                        <label for="remember">#}
-                                    {#                                            Remember Me#}
-                                    {#                                        </label>#}
-                                    {#                                    </div>#}
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-4">
-                                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                                </div>
-                                <!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                {#                                    <div class="icheck-primary">#}
+                                {#                                        <input type="checkbox" id="remember">#}
+                                {#                                        <label for="remember">#}
+                                {#                                            Remember Me#}
+                                {#                                        </label>#}
+                                {#                                    </div>#}
                             </div>
-                        </form>
-                        <p class="mb-1">
-                            <a href="/accounts/reset_password/">Esqueci a minha senha!</a>
-                        </p>
-                        <p class="mb-0">
-                            <span>Não tem uma conta?<a href="#" class="text-center"> Registre-se</a></span>
-                        </p>
-                    </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                    <p class="mb-1">
+                        <a href="/accounts/reset_password/">Esqueci a minha senha!</a>
+                    </p>
+                    <p class="mb-0">
+                        <span>Não tem uma conta?<a href="#" class="text-center"> Registre-se</a></span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    {#    <form action="" method="post">#}
-    {#        {% csrf_token %}#}
-    {#        {% bootstrap_field form.username %}#}
-    {#        <button type="submit" class="btn btn-primary">#}
-    {#            Submit#}
-    {#        </button>#}
-    {#    </form>#}
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        {% bootstrap_field form.username %}#}
+{#        <button type="submit" class="btn btn-primary">#}
+{#            Submit#}
+{#        </button>#}
+{#    </form>#}
 
 {% endblock %}
