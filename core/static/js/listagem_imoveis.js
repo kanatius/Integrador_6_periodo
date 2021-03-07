@@ -83,7 +83,13 @@ class ListaImoveis extends React.Component {
                 _this.state.carregouTodos = true;
                 _this.setState({
                     msgDivFinal : "Não há mais imóveis disponíveis para locação na cidade de " + cidade + "-" + estado
-                })
+                });
+
+                if (_this.state.imoveis.length == 0){
+                    _this.setState({
+                        msgDivFinal : "Não há imóveis disponíveis para locação na cidade de " + cidade + "-" + estado
+                    });
+                }
             }
 
             _this.setState({imoveis: _this.state.imoveis});
