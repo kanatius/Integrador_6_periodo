@@ -39,12 +39,11 @@ class Imovel(models.Model):
 
 class ImovelImagem(models.Model):
 
-    uri_arquivo = models.FileField(upload_to=IMOVEIS_IMAGENS_DIR)
+    uri_arquivo = models.ImageField(upload_to=IMOVEIS_IMAGENS_DIR)
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE, related_name="imagens")
 
     def delete(self):
-        filepath = os.path.join(IMOVEIS_IMAGENS_DIR, self.uri_arquivo.name)
-        os.remove(filepath) #remove arquivo da pasta
+        os.remove(self.uri_arquivo.path) #remove arquivo da pasta
         super(ImovelImagem, self).delete()
 
 

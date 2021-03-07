@@ -136,16 +136,16 @@ LOGOUT_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'files/')
+MEDIA_ROOT = 'files/'
 MEDIA_URL = "/files/"
 
-IMOVEIS_IMAGENS_DIR = os.path.join(MEDIA_ROOT, "imagensImoveis/")
+IMOVEIS_IMAGENS_DIR = "imagensImoveis/"
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    IMOVEIS_IMAGENS_DIR,
+    BASE_DIR / MEDIA_ROOT,
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
