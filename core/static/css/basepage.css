@@ -42,6 +42,7 @@ section .section-title {
 #footer {
   background: #523a28 !important;
   margin-top: 200px;
+  opacity: 97%;
 }
 
 #footer h5 {
