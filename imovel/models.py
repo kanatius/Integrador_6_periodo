@@ -27,6 +27,7 @@ class Imovel(models.Model):
     tipo = models.CharField(max_length=55)
     status = models.CharField(max_length=55)
     valor_mensal = models.IntegerField()
+    proprietario = models.ForeignKey(Usuario, default=2, blank=False, null=False, on_delete=models.CASCADE)
 
     def delete(self):
 
