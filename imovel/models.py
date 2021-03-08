@@ -29,6 +29,10 @@ class Imovel(models.Model):
     valor_mensal = models.IntegerField()
     proprietario = models.ForeignKey(Usuario, default=2, blank=False, null=False, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Imovel"
+        verbose_name_plural = "Imoveis"
+
     def delete(self):
 
         imagens = self.imagens.all()
@@ -42,6 +46,10 @@ class ImovelImagem(models.Model):
 
     uri_arquivo = models.ImageField(upload_to=IMOVEIS_IMAGENS_DIR)
     imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE, related_name="imagens")
+
+    class Meta:
+        verbose_name = "Imovel imagem"
+        verbose_name_plural = "Imovel imagens"
 
     def delete(self):
         os.remove(self.uri_arquivo.path) #remove arquivo da pasta
