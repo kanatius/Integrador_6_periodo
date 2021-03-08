@@ -28,10 +28,11 @@ class ListaImoveis extends React.Component {
 
     getCard = (imovel) => {
 
-        console.log(imovel);
-
         let urlImagem = (imovel.imagens.length == 0) ? "" : imovel.imagens[0].link;
         console.log(urlImagem);
+
+        let href = "/imovel/" + imovel.id;
+
         return (
             <div key={imovel.id} className="card col-lg-7">
                 <div className="card-img">
@@ -43,7 +44,7 @@ class ListaImoveis extends React.Component {
                     <p className="card-text">{imovel.descricao}</p>
                 </div>
                 <div className="card-footer">
-                    <small className="text-muted"><a href="#">Detalhes</a></small>
+                    <small className="text-muted"><a href={href} target="_blank">Detalhes</a></small>
                 </div>
             </div>);
     }

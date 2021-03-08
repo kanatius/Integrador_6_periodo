@@ -4,36 +4,37 @@
 <html lang="pt" style="height: 100%">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-    {% block extrahead %}{% endblock %}
-    <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles icon-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomePage</title>
+  {% block extrahead %}{% endblock %}
+  <link href="{% static 'css/all.css' %}" rel="stylesheet">
+  <!--load all styles icon-->
 
-    <!-- Css Bootstrap -->
-    <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
+  <!-- Css Bootstrap -->
+  <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
   <!-- Css Bootstrap -->
   <link rel="stylesheet" href="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}">
 
-    <!-- popper -->
-    <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/popper.min.js' %}"></script>
+  <!-- popper -->
+  <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/popper.min.js' %}"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js' %}"></script>
+  <!-- Bootstrap JS -->
+  <script src="{% static 'bootstrap-5.0.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js' %}"></script>
 
-    <!-- Custom CSS -->
+  <!-- Custom CSS -->
   <script src="{% static 'React/react.development.js' %}"></script>
   <script src="{% static 'React/react-dom.development.js' %}"></script>
 
   <!-- React -->
-    <!-- Auto Complete -->
+  <!-- Auto Complete -->
   <script src="{% static 'React/prop-types-15.7.2.js' %}"></script>
   <!-- <script src="https://unpkg.com/classnames@2.2.6/index.js"></script>  -->
   <script src="{% static 'React/react-input-autosize-2.2.2.js' %}"></script>
   <script src="{% static 'React/emotion-10.0.27.umd.min.js' %}"></script>
   <script src="{% static 'React/react-select-2.4.4.js' %}"></script>
-    <!-- Auto Complete -->
+  <!-- Auto Complete -->
 
   <!-- React -->
 
@@ -49,23 +50,86 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light">
+  <nav class="navbar navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img id="img-logo" src="{% static 'imagens/Alugaqui - Logo-02.png' %}" alt=""
-                 class="d-inline-block align-top">
-        </a>
+      <a class="navbar-brand" href="/">
+        <img id="img-logo" src="{% static 'imagens/Alugaqui - Logo-02.png' %}" alt="" class="d-inline-block align-top">
+      </a>
     </div>
-</nav>
+  </nav>
 
-<div class="container" id="sheet">
+  <div class="container" id="sheet">
     {% block page %}
 
 
 
 
-  {% endblock %}
-</div>
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+	<section id="footer">
+		<div class="container">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Desenvolvedores</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Maria Jakeline Freitas da Silva</a></li>
+            <li><a href="#">
+              <a href="https://github.com/jakeline-freitas" target="_blank"><i class="fa fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/maria-jakeline-360b93124/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Natan Almeida de Lima</a></li>
+            <li><a href="#">
+              <a href="https://github.com/kanatius" target="_blank"><i class="fa fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/natan-almeida-2662a0171/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Sobre Nós</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Quem Somos</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>O Que Fazemos</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Como Fazemos</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Onde Fazemos</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i><i class="fa fa-youtube"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Instituto Responsável</h5>
+          <img id="if-logo-footer" src="/static/imagens/ifrn_logo_preta.png" alt="">
+					<!-- <ul class="list-unstyled quick-links">
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>About</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+						<li><a href="#!" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+					</ul> -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+					<ul class="list-unstyled list-inline social text-center">
+						<li class="list-inline-item"><a href="#!"><i class="fa fa-github"></i></a></li>
+						<li class="list-inline-item"><a href="#!"><i class="fa fa-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="#!"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="#!"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="#!"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+				</div>
+				<hr>
+			</div>	
+			<!-- <div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p><u><a href="#!">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
+					<p class="h6">© All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
+				</div>
+				<hr>
+			</div>	 -->
+		</div>
+	</section>
+	<!-- ./Footer -->
 </body>
 
 </html>
