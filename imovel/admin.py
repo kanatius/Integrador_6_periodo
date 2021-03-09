@@ -17,6 +17,7 @@ class ImovelAdmin(admin.ModelAdmin):
     class Meta:
         model = Imovel
 
+
 @admin.register(ImovelImagem)
 class ImovelImageAdmin(admin.ModelAdmin):
     pass

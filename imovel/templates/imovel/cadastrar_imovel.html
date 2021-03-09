@@ -1,0 +1,49 @@
+{# Load the tag library #}
+{% load static %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% block extrahead %}
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    <!--load all styles -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block page %}
+
+    <div>
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+
+
+            {{ formset.management_form }}
+
+            <legend class="lead">Imagens</legend>
+
+            <div id="order" class="form-inline form-group">
+                {% for item_order_form in formset %}
+                    <div id="item-{{ forloop.counter0 }}">
+                        {{ item_order_form|crispy }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <a class="btn btn-info" id="add-item"><i class="fa fa-plus"></i> Add Item</a>
+
+            <div class="form-inline buttons">
+                <a href="#" class="btn btn-warning pull-right"><i class="fa fa-times"></i> Cancelar</a>
+                <button class="btn btn-primary pull-right" value="Save"><i class="fa fa-floppy-o"></i> Salvar</button>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
