@@ -50,13 +50,65 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img id="img-logo" src="{% static 'imagens/Alugaqui - Logo-02.png' %}" alt="" class="d-inline-block align-top">
       </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-flex">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Procurar Imóveis</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul> -->
+
+            {% if user.is_authenticated %}
+            <!-- Funcionalidades -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Minha Conta
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Perfil</a></li>
+                <li><a class="dropdown-item" href="#!">Meus Imóveis</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a href="{% url 'accounts:logout' %}" class="dropdown-item">Sair
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- Funcionalidades -->
+
+            
+            {% else %}
+            <li class="nav-item" id="login-li">
+              <a id="btn-login" href="{% url 'accounts:login' %}" class="btn btn-sm nav-link">Entrar</a>
+            </li>
+            {% endif %}
+
+
+        </div>
+      </div>
     </div>
   </nav>
+
+
 
   <div class="container" id="sheet">
     {% block page %}
@@ -68,68 +120,70 @@
   </div>
 
   <!-- Footer -->
-	<section id="footer">
-		<div class="container">
-			<div class="row text-center text-xs-center text-sm-left text-md-left">
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Desenvolvedores</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>Maria Jakeline Freitas da Silva</a></li>
+  <section id="footer">
+    <div class="container">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Desenvolvedores</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Maria Jakeline Freitas da Silva</a></li>
             <li><a href="#">
-              <a href="https://github.com/jakeline-freitas" target="_blank"><i class="fa fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/maria-jakeline-360b93124/" target="_blank"><i class="fa fa-linkedin"></i></a>
-            </a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>Natan Almeida de Lima</a></li>
+                <a href="https://github.com/jakeline-freitas" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/maria-jakeline-360b93124/" target="_blank"><i
+                    class="fa fa-linkedin"></i></a>
+              </a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Natan Almeida de Lima</a></li>
             <li><a href="#">
-              <a href="https://github.com/kanatius" target="_blank"><i class="fa fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/natan-almeida-2662a0171/" target="_blank"><i class="fa fa-linkedin"></i></a>
-            </a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Sobre Nós</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Quem Somos</a></li>
-						<li><a href="#!"><i class="fa fa-angle-double-right"></i>O Que Fazemos</a></li>
-						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Como Fazemos</a></li>
-						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Onde Fazemos</a></li>
-						<li><a href="#!"><i class="fa fa-angle-double-right"></i><i class="fa fa-youtube"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Instituto Responsável</h5>
+                <a href="https://github.com/kanatius" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/natan-almeida-2662a0171/" target="_blank"><i
+                    class="fa fa-linkedin"></i></a>
+              </a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Sobre Nós</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="#!"><i class="fa fa-angle-double-right"></i>Quem Somos</a></li>
+            <li><a href="#!"><i class="fa fa-angle-double-right"></i>O Que Fazemos</a></li>
+            <li><a href="#!"><i class="fa fa-angle-double-right"></i>Como Fazemos</a></li>
+            <li><a href="#!"><i class="fa fa-angle-double-right"></i>Onde Fazemos</a></li>
+            <li><a href="#!"><i class="fa fa-angle-double-right"></i><i class="fa fa-youtube"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Instituto Responsável</h5>
           <img id="if-logo-footer" src="/static/imagens/ifrn_logo_preta.png" alt="">
-					<!-- <ul class="list-unstyled quick-links">
+          <!-- <ul class="list-unstyled quick-links">
 						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Home</a></li>
 						<li><a href="#!"><i class="fa fa-angle-double-right"></i>About</a></li>
 						<li><a href="#!"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
 						<li><a href="#!"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
 						<li><a href="#!" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
 					</ul> -->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="#!"><i class="fa fa-github"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i class="fa fa-linkedin"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i class="fa fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i class="fa fa-envelope"></i></a></li>
-					</ul>
-				</div>
-				<hr>
-			</div>	
-			<!-- <div class="row">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+          <ul class="list-unstyled list-inline social text-center">
+            <li class="list-inline-item"><a href="#!"><i class="fa fa-github"></i></a></li>
+            <li class="list-inline-item"><a href="#!"><i class="fa fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#!"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#!"><i class="fa fa-google-plus"></i></a></li>
+            <li class="list-inline-item"><a href="#!"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <hr>
+      </div>
+      <!-- <div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
 					<p><u><a href="#!">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
 					<p class="h6">© All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
 				</div>
 				<hr>
 			</div>	 -->
-		</div>
-	</section>
-	<!-- ./Footer -->
+    </div>
+  </section>
+  <!-- ./Footer -->
 </body>
 
 </html>

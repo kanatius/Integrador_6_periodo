@@ -1,4 +1,3 @@
-{# Load the tag library #}
 {% load static %}
 {% load bootstrap4 %}
 {% block extrahead %}
@@ -117,7 +116,7 @@
                         </form>
 
                         <p class="mb-0">
-                            <span>Já tem uma conta?<a href="#" class="text-center"> Login</a></span>
+                            <span>Já tem uma conta? <a href="{% url 'accounts:login' %}" class="text-center">Entrar</a></span>
                         </p>
                     </div>
                 </div>

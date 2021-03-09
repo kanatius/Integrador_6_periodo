@@ -4,7 +4,7 @@
 
 body{
     margin: 0px;
-    background-color: rgba($serenity, .75) !important;
+    background-color: rgba($serenity, 1) !important;
 }
 
 .navbar{
@@ -110,4 +110,57 @@ section .section-title {
     padding-bottom: 0px;
     margin-bottom: 10px;
 }
+}
+
+#btn-login{
+    background-color: white;
+    color: $navy-blue !important;
+    font-size: 13px;
+    border: 0px;
+    font-weight: bold;
+}
+
+#login-li{
+    overflow-y: hidden;
+    display: flex;
+    align-items: center !important;
+}
+
+#btn-sair{
+    background-color: inherit;
+    color: white;
+    border: 0px;
+}
+
+#btn-login:focus, #btn-sair:focus {
+    box-shadow: none;
+}
+
+#btn-login:hover, #btn-sair:hover{
+    opacity: 90%;
+}
+
+.nav-item{
+    margin-right: 10px;
+
+    a{
+        color: white !important;
+    }
+    a:hover{
+        opacity: 90%;
+    }
+    font-size: 15px;
+}
+
+.nav-link{
+    font-size: 15px;
+}
+
+ul li .dropdown-item{
+    color: $navy-blue !important;
+}
+
+ul li .dropdown-item:hover{
+    background-color: rgba($navy-blue, $alpha: 1);
+    color: white !important;
 }

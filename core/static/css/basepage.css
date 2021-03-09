@@ -1,7 +1,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 body {
   margin: 0px;
-  background-color: rgba(208, 219, 220, 0.75) !important;
+  background-color: #d0dbdc !important;
 }
 
 .navbar {
@@ -119,6 +119,57 @@ section .section-title {
     padding-bottom: 0px;
     margin-bottom: 10px;
   }
+}
+#btn-login {
+  background-color: white;
+  color: #324c65 !important;
+  font-size: 13px;
+  border: 0px;
+  font-weight: bold;
+}
+
+#login-li {
+  overflow-y: hidden;
+  display: flex;
+  align-items: center !important;
+}
+
+#btn-sair {
+  background-color: inherit;
+  color: white;
+  border: 0px;
+}
+
+#btn-login:focus, #btn-sair:focus {
+  box-shadow: none;
+}
+
+#btn-login:hover, #btn-sair:hover {
+  opacity: 90%;
+}
+
+.nav-item {
+  margin-right: 10px;
+  font-size: 15px;
+}
+.nav-item a {
+  color: white !important;
+}
+.nav-item a:hover {
+  opacity: 90%;
+}
+
+.nav-link {
+  font-size: 15px;
+}
+
+ul li .dropdown-item {
+  color: #324c65 !important;
+}
+
+ul li .dropdown-item:hover {
+  background-color: #324c65;
+  color: white !important;
 }
 
 /*# sourceMappingURL=basepage.css.map */
