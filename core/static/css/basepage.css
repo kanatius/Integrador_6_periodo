@@ -41,7 +41,7 @@ section .section-title {
 
 #footer {
   background: #523a28 !important;
-  margin-top: 200px;
+  margin-top: 250px;
   opacity: 97%;
 }
 
@@ -140,11 +140,13 @@ section .section-title {
   border: 0px;
 }
 
-#btn-login:focus, #btn-sair:focus {
+#btn-login:focus,
+#btn-sair:focus {
   box-shadow: none;
 }
 
-#btn-login:hover, #btn-sair:hover {
+#btn-login:hover,
+#btn-sair:hover {
   opacity: 90%;
 }
 
@@ -170,6 +172,30 @@ ul li .dropdown-item {
 ul li .dropdown-item:hover {
   background-color: #324c65;
   color: white !important;
+}
+
+.navbar-toggler {
+  color: white;
+}
+.navbar-toggler span {
+  color: white;
+}
+
+.navbar-light span.navbar-toggler-icon {
+  background-color: white;
+}
+
+.navbar-light .navbar-toggler {
+  color: transparent;
+}
+
+button.navbar-toggler {
+  background-color: white;
+  color: white;
+}
+
+#navbarSupportedContent {
+  justify-content: inherit;
 }
 
 /*# sourceMappingURL=basepage.css.map */

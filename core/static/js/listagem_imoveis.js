@@ -41,6 +41,7 @@ class ListaImoveis extends React.Component {
                 <div className="card-body">
                     <h5 className="card-title"><b>{imovel.tipo}</b></h5>
                     <p className="card-text"><b>{imovel.endereco.logradouro}, Nº {imovel.endereco.numero} - Bairro: {imovel.endereco.bairro}</b></p>
+                    <p>R$ {imovel.valor_mensal},00/mês</p>
                     <p className="card-text">{imovel.descricao}</p>
                 </div>
                 <div className="card-footer">

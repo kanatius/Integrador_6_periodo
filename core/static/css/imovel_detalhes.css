@@ -38,6 +38,8 @@ h4, .row p {
   text-align: center;
   min-width: 300px;
   max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #clique-mens-div {

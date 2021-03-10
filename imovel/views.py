@@ -14,7 +14,7 @@ def detalhes_page(request, id_imovel):
         pass
 
     if imovel is None:
-        return redirect(request, "core:index")
+        return redirect("core:index")
 
     proprietario = imovel.proprietario
 
