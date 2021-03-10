@@ -47,12 +47,57 @@ h4, .row p {
 }
 
 .propi-div {
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 section#imgs-section {
   margin-bottom: 50px;
   padding-top: 10px;
+}
+
+#div-email {
+  margin-top: 10px;
+  padding: 10px;
+  padding-bottom: 50px;
+  min-height: 300px;
+  background-color: rgba(164, 117, 81, 0.98);
+}
+#div-email .col {
+  display: flex;
+  justify-content: center;
+}
+#div-email .col b {
+  color: white;
+}
+
+.col textarea {
+  margin-top: 15px;
+  border-radius: 4px;
+  text-align: justify;
+  font-size: 12px;
+}
+
+#div-descricao {
+  min-height: 240px;
+}
+
+button.mens-email {
+  color: white !important;
+  font-size: 30px;
+  box-shadow: none !important;
+}
+
+button.mens-email:hover {
+  color: #523a28 !important;
+}
+
+#enviar-email {
+  color: white;
+  box-shadow: none !important;
+}
+
+#enviar-email:hover {
+  opacity: 90%;
 }
 
 /*# sourceMappingURL=imovel_detalhes.css.map */
