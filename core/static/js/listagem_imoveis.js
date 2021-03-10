@@ -31,7 +31,7 @@ class ListaImoveis extends React.Component {
         let urlImagem = (imovel.imagens.length == 0) ? "" : imovel.imagens[0].link;
         console.log(urlImagem);
 
-        let href = "/imovel/" + imovel.id;
+        let href = "/imovel/detalhes/" + imovel.id;
 
         return (
             <div key={imovel.id} className="card col-lg-7">

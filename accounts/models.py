@@ -47,5 +47,4 @@ class Usuario(AbstractUser):
     def getFullName(self):
         return self.nome + " " + self.sobrenome
     
-    
     objects = UsuarioManager()

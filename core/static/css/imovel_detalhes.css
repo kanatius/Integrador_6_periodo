@@ -1,0 +1,60 @@
+.col {
+  margin-top: 10px;
+}
+
+.img-mini {
+  width: 100%;
+}
+
+.img-mini-inline {
+  width: 100%;
+  height: 50px;
+}
+
+.img-wrapper {
+  border: 1px solid white;
+  max-height: 100px;
+  overflow: hidden;
+  min-width: 50px;
+}
+
+.img-wrapper-in-line {
+  overflow: hidden;
+  max-height: 50px;
+  min-width: 50px;
+  border: 1px solid white;
+}
+
+h4, .row p {
+  text-align: center;
+}
+
+#img-zoom {
+  max-height: 500px;
+  max-width: 100%;
+}
+
+#img-zoom-div {
+  text-align: center;
+  min-width: 300px;
+  max-width: 100%;
+}
+
+#clique-mens-div {
+  text-align: center;
+}
+
+.propi-div {
+  margin-top: 60px;
+}
+
+section#imgs-section {
+  margin-bottom: 50px;
+  padding-top: 10px;
+}
+
+.div-imgs-left {
+  transition-duration: 1.4s;
+}
+
+/*# sourceMappingURL=imovel_detalhes.css.map */
