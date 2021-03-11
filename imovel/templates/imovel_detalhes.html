@@ -59,7 +59,7 @@
         <input type="text" id="usuario-nome" value="{{user.getFullName}}" hidden>
         <input type="text" id="usuario-telefone" value="{{user.telefone}}" hidden>
         <input type="text" id="usuario-email" value="{{user.email}}" hidden>
-        <form action="#!" method="post">
+        <form action="/imovel/enviarEmailProp/{{imovel.id}}" method="post">
             {% csrf_token %}
             <div class="col col-sm-12">
                 <b>Digite aqui sua mensagem ou clique nos envelopes para usar modelos prontos:</b>
@@ -68,13 +68,27 @@
                 <textarea class="input" required name="texto-mens" id="textarea-mens" cols="80" rows="10">
         </textarea>
             </div>
+            {% if messages %}
+            <!-- MENSAGENS -->
+            <div class="col col-sm-12" id="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="bg-{{ message.tags }} col col-sm-12"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            </div>
+            <!-- MENSAGENS -->
+            {% endif %}
             <div class="col col-sm-12">
-                <button class="btn btn-success" id="enviar-email" onclick="return confirm('Tem certeza que deseja enviar o e-mail para o propietário?')">Enviar e-mail</button>
+                <button class="btn btn-success" id="enviar-email"
+                    onclick="return confirm('Tem certeza que deseja enviar o e-mail para o propietário?')">Enviar
+                    e-mail</button>
             </div>
             <div class="col col-sm-12">
-                <button type="button" class="btn mens-email" onclick="mensagemTipo1()"><i class="fa fa-envelope"></i></button>
-                <button type="button" class="btn mens-email" onclick="mensagemTipo2()"><i class="fa fa-envelope"></i></button>
-                <button type="button" class="btn mens-email" onclick="mensagemTipo3()"><i class="fa fa-envelope"></i></button>
+                <button type="button" id="bt1" class="btn mens-email" onclick="mensagemTipo1()"><i
+                        class="fa fa-envelope"></i></button>
+                <button type="button" id="bt2" class="btn mens-email" onclick="mensagemTipo2()"><i
+                        class="fa fa-envelope"></i></button>
+                <button type="button" id="bt3" class="btn mens-email" onclick="mensagemTipo3()"><i
+                        class="fa fa-envelope"></i></button>
             </div>
         </form>
     </div>

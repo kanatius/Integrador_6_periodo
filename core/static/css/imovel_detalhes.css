@@ -87,8 +87,16 @@ button.mens-email {
   box-shadow: none !important;
 }
 
-button.mens-email:hover {
-  color: #523a28 !important;
+button#bt1:hover {
+  color: #ffc107 !important;
+}
+
+button#bt2:hover {
+  color: #198754 !important;
+}
+
+button#bt3:hover {
+  color: #dc3545 !important;
 }
 
 #enviar-email {
@@ -98,6 +106,12 @@ button.mens-email:hover {
 
 #enviar-email:hover {
   opacity: 90%;
+}
+
+div#messages .bg-success {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
 }
 
 /*# sourceMappingURL=imovel_detalhes.css.map */

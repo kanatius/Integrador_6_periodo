@@ -154,6 +154,6 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 #email
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '4186a04d856121'
-EMAIL_HOST_PASSWORD = '3a4202a3862009'
+EMAIL_HOST_USER = '27b297ae8108db'
+EMAIL_HOST_PASSWORD = 'e3d6d26fe29c2b'
 EMAIL_PORT = '2525'

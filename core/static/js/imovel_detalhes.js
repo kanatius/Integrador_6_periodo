@@ -1,13 +1,12 @@
+// ------ IMAGENS ------ //
 
+//coloca a imagem que foi clicada da div de zoom
 function zoomImage(src) {
     document.getElementById("img-zoom").src = src;
 }
 
-document.getElementsByClassName("img-mini")[0].onclick();
-
-
+//modifica a lista da vertical pra horizontal
 function handleImgList(){
-    console.log(window.innerWidth);
     if (window.innerWidth < 576){
         $("#div-imgs-left").hide();
         $(".img-wrapper-in-line").show();
@@ -16,6 +15,31 @@ function handleImgList(){
         $(".img-wrapper-in-line").hide();
     } 
 }
+
+//lida com a mudança do tamanho da tela e seleciona qual lista aparace quando a página é carregada
+$(window).ready(function(){
+    handleImgList();
+    window.onresize = handleImgList;
+})
+
+//mostra a primeira imagem da lista no local do zoom
+document.getElementsByClassName("img-mini")[0].onclick();
+
+// ------ IMAGENS ------ //
+
+
+// ------ MENSAGENS ------ //
+//esconde as mensagens
+(function hideMessages(){
+    setTimeout(function(){
+        $("#messages").hide()
+    }, 3000);
+})();
+
+// ------ MENSAGENS ------ //
+
+
+// ------ FUNÇÕES PARA PREENCHER AS MENSAGENS AUTOMATICAMENTE ------ //
 
 var usuarioNome = document.getElementById("usuario-nome").value;
 var usuarioTelefone = document.getElementById("usuario-telefone").value;
@@ -43,8 +67,4 @@ function mensagemTipo3(){
     let mens = "Bom dia! Meu nome é " + usuarioNome +", gostei bastante do seu imóvel, poderia entrar em contato comigo para mais informações?\n\nContato: " + usuarioTelefone + " - " + usuarioEmail;
     document.getElementById("textarea-mens").value = mens;
 }
-
-$(window).ready(function(){
-    handleImgList();
-    window.onresize = handleImgList;
-})
+// ------ FUNÇÕES PARA PREENCHER AS MENSAGENS AUTOMATICAMENTE ------ //
