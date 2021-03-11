@@ -9,7 +9,7 @@
 <div class="row">
     <h4><b>{{imovel.tipo}}</b></h4>
     <p>{{imovel.endereco.logradouro}}, Nº {{imovel.endereco.numero}} - Bairro:
-            {{imovel.endereco.bairro}}</p><br>
+        {{imovel.endereco.bairro}}</p><br>
     <hr />
     <p>R$ {{imovel.valor_mensal}},00/mês</p>
 </div>
@@ -43,17 +43,48 @@
     </div>
 </section>
 <hr />
-<p><b>Descrição fornecida pelo proprietário:</b></p>
-<p>{{imovel.descricao}}</p>
-
+<div id="div-descricao">
+    <p><b>Descrição fornecida pelo proprietário:</b></p>
+    <p>{{imovel.descricao}}</p>
+</div>
+<hr />
 <div class="propi-div">
     <p>
         <b>Proprietário:</b> {{proprietario.getFullName}} <br>
-        <b>Contato: </b> {{proprietario.telefone}} - {{proprietario.email}}
+        <b>Contato: </b> <i class="fas fa-phone"></i> {{proprietario.telefone}} - <i class="fa fa-envelope"></i>
+        {{proprietario.email}}
     </p>
+    <div>Envie um E-mail diretamente para o propietário</div>
+    <div id="div-email" class="row">
+        <input type="text" id="usuario-nome" value="{{user.getFullName}}" hidden>
+        <input type="text" id="usuario-telefone" value="{{user.telefone}}" hidden>
+        <input type="text" id="usuario-email" value="{{user.email}}" hidden>
+        <form action="#!" method="post">
+            {% csrf_token %}
+            <div class="col col-sm-12">
+                <b>Digite aqui sua mensagem ou clique nos envelopes para usar modelos prontos:</b>
+            </div>
+            <div class="col col-sm-12">
+                <textarea class="input" required name="texto-mens" id="textarea-mens" cols="80" rows="10">
+        </textarea>
+            </div>
+            <div class="col col-sm-12">
+                <button class="btn btn-success" id="enviar-email" onclick="return confirm('Tem certeza que deseja enviar o e-mail para o propietário?')">Enviar e-mail</button>
+            </div>
+            <div class="col col-sm-12">
+                <button type="button" class="btn mens-email" onclick="mensagemTipo1()"><i class="fa fa-envelope"></i></button>
+                <button type="button" class="btn mens-email" onclick="mensagemTipo2()"><i class="fa fa-envelope"></i></button>
+                <button type="button" class="btn mens-email" onclick="mensagemTipo3()"><i class="fa fa-envelope"></i></button>
+            </div>
+        </form>
+    </div>
 </div>
 
+<div>
 
+
+
+</div>
 
 <script src="/static/js/imovel_detalhes.js"></script>
 
