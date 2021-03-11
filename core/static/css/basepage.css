@@ -198,4 +198,9 @@ button.navbar-toggler {
   justify-content: inherit;
 }
 
+.dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
 /*# sourceMappingURL=basepage.css.map */

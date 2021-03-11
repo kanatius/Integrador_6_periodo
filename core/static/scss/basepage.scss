@@ -203,3 +203,8 @@ button.navbar-toggler{
 #navbarSupportedContent{
     justify-content: inherit
 }
+
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
