@@ -31,7 +31,7 @@ class ListaImoveis extends React.Component {
         let urlImagem = (imovel.imagens.length == 0) ? "" : imovel.imagens[0].link;
         console.log(urlImagem);
 
-        let href = "/imovel/" + imovel.id;
+        let href = "/imovel/detalhes/" + imovel.id;
 
         return (
             <div key={imovel.id} className="card col-lg-7">
@@ -41,6 +41,7 @@ class ListaImoveis extends React.Component {
                 <div className="card-body">
                     <h5 className="card-title"><b>{imovel.tipo}</b></h5>
                     <p className="card-text"><b>{imovel.endereco.logradouro}, Nº {imovel.endereco.numero} - Bairro: {imovel.endereco.bairro}</b></p>
+                    <p>R$ {imovel.valor_mensal},00/mês</p>
                     <p className="card-text">{imovel.descricao}</p>
                 </div>
                 <div className="card-footer">
@@ -117,7 +118,7 @@ class ListaImoveis extends React.Component {
 var listaIMoveis = React.createElement(ListaImoveis);
 
 $(window).scroll(function () {
-    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 400) {
+    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 1000) {
         document.getElementById("carregar-mais").click();
     }
 });

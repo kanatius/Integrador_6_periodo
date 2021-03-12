@@ -1,0 +1,122 @@
+.col {
+  margin-top: 10px;
+}
+
+.img-mini {
+  width: 100%;
+}
+
+.img-mini-inline {
+  width: 100%;
+  height: 50px;
+}
+
+.img-wrapper {
+  border: 1px solid white;
+  max-height: 100px;
+  overflow: hidden;
+  min-width: 50px;
+}
+
+.img-wrapper-in-line {
+  overflow: hidden;
+  max-height: 50px;
+  min-width: 50px;
+  border: 1px solid white;
+}
+
+h4, .row p {
+  text-align: center;
+}
+
+#img-zoom {
+  max-height: 500px;
+  max-width: 100%;
+}
+
+#img-zoom-div {
+  text-align: center;
+  min-width: 300px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#clique-mens-div {
+  text-align: center;
+}
+
+.propi-div {
+  margin-top: 10px;
+}
+
+section#imgs-section {
+  margin-bottom: 50px;
+  padding-top: 10px;
+}
+
+#div-email {
+  margin-top: 10px;
+  padding: 10px;
+  padding-bottom: 50px;
+  min-height: 300px;
+  background-color: rgba(164, 117, 81, 0.98);
+}
+#div-email .col {
+  display: flex;
+  justify-content: center;
+}
+#div-email .col b {
+  color: white;
+}
+
+.col textarea {
+  margin-top: 15px;
+  color: gray;
+  border-radius: 4px;
+  text-align: justify;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 550px !important;
+  max-width: 100% !important;
+  padding: 10px;
+}
+
+#div-descricao {
+  min-height: 240px;
+}
+
+button.mens-email {
+  color: white !important;
+  font-size: 30px;
+  box-shadow: none !important;
+}
+
+button#bt1:hover {
+  color: #ffc107 !important;
+}
+
+button#bt2:hover {
+  color: #198754 !important;
+}
+
+button#bt3:hover {
+  color: #dc3545 !important;
+}
+
+#enviar-email {
+  color: white;
+  box-shadow: none !important;
+}
+
+#enviar-email:hover {
+  opacity: 90%;
+}
+
+div#messages .bg-success {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+/*# sourceMappingURL=imovel_detalhes.css.map */

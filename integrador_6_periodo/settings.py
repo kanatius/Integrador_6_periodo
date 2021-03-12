@@ -17,6 +17,7 @@ from .env import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,6 +28,7 @@ SECRET_KEY = 'o974mji=8kxnzbyd7%b=w&81l8xbm^zd#02(x$m$$@o#%)b5sz'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -42,11 +44,11 @@ INSTALLED_APPS = [
     'accounts',
     'imovel',
 
-    # estiliza forms
+    #estiliza forms
     "bootstrap4",
     'crispy_forms',
 
-    # API
+    #API
     'api'
 ]
 
@@ -79,6 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'integrador_6_periodo.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -150,8 +153,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-# email
+#email
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '4186a04d856121'
-EMAIL_HOST_PASSWORD = '3a4202a3862009'
+EMAIL_HOST_USER = '27b297ae8108db'
+EMAIL_HOST_PASSWORD = 'e3d6d26fe29c2b'
 EMAIL_PORT = '2525'
