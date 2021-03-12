@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
-from imovel.models import Imovel, ImovelImagem
+from imovel.models import Imovel, ImovelImagem, Endereco
 
 
 class ImovelForm(ModelForm):
@@ -20,4 +20,11 @@ class ImagemImovelForm(ModelForm):
         exclude = ['imovel']
 
 
+class EnderecoImovelForm(ModelForm):
+    class Meta:
+        model = Endereco
+        exclude = ['imovel']
+
+
 ImagemFormSet = inlineformset_factory(Imovel, ImovelImagem, form=ImagemImovelForm)
+EnderecoFormSet = inlineformset_factory(Imovel, Endereco, form=EnderecoImovelForm)

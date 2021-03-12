@@ -14,6 +14,8 @@ class Cidade(models.Model):
     estado = models.CharField(max_length=255)
     estado_sem_acentos = models.CharField(max_length=255)
     
+    def __str__(self):
+        return self.nome
 
     def save(self, *args, **kwargs):
         self.nome_sem_acentos = removeAccentsOfString(self.nome)
@@ -33,6 +35,9 @@ class Imovel(models.Model):
         verbose_name = "Imovel"
         verbose_name_plural = "Imoveis"
 
+    def __str__(self):
+        return self.tipo
+
     def delete(self):
 
         imagens = self.imagens.all()
@@ -41,6 +46,7 @@ class Imovel(models.Model):
             img.delete()
         
         super(Imovel, self).delete()
+
 
 class ImovelImagem(models.Model):
 
@@ -65,4 +71,5 @@ class Endereco(models.Model):
     imovel = models.OneToOneField(Imovel, on_delete=models.CASCADE)
     cidade = models.ForeignKey(Cidade, on_delete=models.DO_NOTHING)
 
-
+    def __str__(self):
+        return self.bairro

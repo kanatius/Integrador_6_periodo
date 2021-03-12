@@ -24,15 +24,28 @@
 
             {% bootstrap_form form %}
 
+            {{ formsetE.management_form }}
+            <legend class="lead"> Endereço</legend>
+            <div id="endereco" class="form-inline form-group">
+                {% for item_form in formsetE %}
+
+                    <div id="item-{{ forloop.counter0 }}">
+                        {% bootstrap_form item_form %}
+                    </div>
+                {% endfor %}
+            </div>
 
             {{ formset.management_form }}
 
-            <legend class="lead">Imagens</legend>
+            <legend class="lead"> Imagens</legend>
 
             <div id="order" class="form-inline form-group">
                 {% for item_order_form in formset %}
+
                     <div id="item-{{ forloop.counter0 }}">
-                        {{ item_order_form|crispy }}
+                        <hr>
+                        {% bootstrap_form item_order_form %}
+                        <hr>
                     </div>
                 {% endfor %}
             </div>
