@@ -22,36 +22,39 @@ class CriarImovel(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('core:index')
 
     def get(self, request, *args, **kwargs):
-        cidade = None
-
-        try:
-            cidade = Cidade.objects.get(nome=request.GET["cidade"], estado_sigla=request.GET["estado"])
-        except:
-            pass
 
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         formset = ImagemFormSet()
         formsetE = EnderecoFormSet()
+
         return self.render_to_response(
             self.get_context_data(form=form, formset=formset, formsetE=formsetE))
 
     def post(self, request, *args, **kwargs):
-
+        cidade = None
         self.object = None
+
         form_class = self.get_form_class()
         form = self.get_form(form_class)
+
         formset = ImagemFormSet(self.request.POST, self.request.FILES)
         formsetE = EnderecoFormSet(self.request.POST)
 
-        if (form.is_valid() and formset.is_valid() and formsetE.is_valid()):
+        cidade = request.POST.get("cidade")
+        estado = request.POST.get("estado")
+        cidadeE = Cidade.objects.get(nome=cidade, estado_sigla=estado)
+
+        if form.is_valid() and formset.is_valid() and formsetE.is_valid():
 
             form.instance.proprietario = self.request.user
             self.object = form.save()
+
             endereco = formsetE.save(commit=False)
             for e in endereco:
                 e.imovel = self.object
+                e.cidade = cidadeE
                 e.save()
 
             media = formset.save(commit=False)
@@ -80,6 +83,7 @@ def detalhes_page(request, id_imovel):
 
     if imovel is None:
         return redirect("core:index")
+
 
     proprietario = imovel.proprietario
 
