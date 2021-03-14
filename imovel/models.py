@@ -18,9 +18,14 @@ class Cidade(models.Model):
         return self.nome
 
     def save(self, *args, **kwargs):
-        self.nome_sem_acentos = removeAccentsOfString(self.nome)
-        self.estado_sem_acentos = removeAccentsOfString(self.estado)
-        super(Cidade, self).save(*args, **kwargs)
+
+        try:
+            cidade = Cidade.objects.get(nome=self.nome, estado_sigla=self.estado_sigla)
+        except:
+            #salva somente se não houver uma cidade com aquele nome e estado
+            self.nome_sem_acentos = removeAccentsOfString(self.nome)
+            self.estado_sem_acentos = removeAccentsOfString(self.estado)
+            super(Cidade, self).save(*args, **kwargs)
 
 
 class Imovel(models.Model):
