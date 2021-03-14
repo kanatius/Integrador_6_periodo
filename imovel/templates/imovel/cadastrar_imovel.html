@@ -18,8 +18,9 @@
 
 {% block page %}
 
-    <div>
-        <form enctype="multipart/form-data" method="post">
+    <div class="container">
+
+        <form enctype="multipart/form-data" method="post" action="">
             {% csrf_token %}
 
             {% bootstrap_form form %}
@@ -33,6 +34,13 @@
                         {% bootstrap_form item_form %}
                     </div>
                 {% endfor %}
+
+                <div id="item-1">
+                    <div id="form-busca">
+
+                    </div>
+                </div>
+
             </div>
 
             {{ formset.management_form }}
@@ -48,6 +56,7 @@
                         <hr>
                     </div>
                 {% endfor %}
+
             </div>
 
             <a class="btn btn-info" id="add-item"><i class="fa fa-plus"></i> Add Item</a>
@@ -59,4 +68,5 @@
 
         </form>
     </div>
+    <script type="text/babel" src="{% static 'js/cadastro_imovel_react.js' %}"></script>
 {% endblock %}

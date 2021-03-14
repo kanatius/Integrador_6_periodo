@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from imovel.forms import ImovelForm, ImagemFormSet, EnderecoFormSet
-from imovel.models import Imovel, ImovelImagem
+from imovel.models import Imovel, ImovelImagem, Cidade
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from api.serializers import ImovelSerializer
 from django.core.mail import send_mail
@@ -14,7 +14,6 @@ from django.contrib import messages
 
 # Create your views here.
 
-
 class CriarImovel(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Imovel
@@ -23,6 +22,12 @@ class CriarImovel(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('core:index')
 
     def get(self, request, *args, **kwargs):
+        cidade = None
+
+        try:
+            cidade = Cidade.objects.get(nome=request.GET["cidade"], estado_sigla=request.GET["estado"])
+        except:
+            pass
 
         self.object = None
         form_class = self.get_form_class()
