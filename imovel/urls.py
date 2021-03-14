@@ -9,4 +9,5 @@ urlpatterns = [
     path('cadastrar_imovel/', CriarImovel.as_view(), name="cadastrarImovel"),
     path("detalhes/<int:id_imovel>", imovel_views.detalhes_page, name="imovel_detalhes"),
     path("enviarEmailProp/<int:id_imovel>", imovel_views.enviar_email_prop, name="enviar_email_prop")
+
 ]
