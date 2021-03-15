@@ -94,7 +94,8 @@ def detalhes_page(request, id_imovel):
 
     return render(request, "imovel_detalhes.html", context={
         "imovel": imovel,
-        "proprietario": proprietario
+        "proprietario": proprietario,
+
     })
 
 

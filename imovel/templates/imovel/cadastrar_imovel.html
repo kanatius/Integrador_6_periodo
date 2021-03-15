@@ -18,56 +18,93 @@
 {% bootstrap_messages %}
 
 {% block page %}
+{#    <script>#}
+{#        $(document).ready(function () {#}
+{#            $("#add-item").click(function (ev) {#}
+{#                ev.preventDefault();#}
+{#                var count = $('#img').children().length;#}
+{#                var tmplMarkup = $("#item-order").html();#}
+{#                var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);#}
+{#                if (count < 6) {#}
+{#                    $("div#img").append(compiledTmpl);#}
+{##}
+{#                    // update form count#}
+{#                    $('#id_product-TOTAL_FORMS').attr('value', count + 1);#}
+{##}
+{#                    // some animate to scroll to view our new form#}
+{#                    $('html, body').animate({#}
+{#                        scrollTop: $("#add-item").position().top - 200#}
+{#                    }, 800);#}
+{#                }#}
+{#            });#}
+{#        });#}
+{#    </script>#}
 
     <div class="container">
+        <fieldset class="border p-2">
+        <legend class='text-center'>Cadastre seu Imovel <i class="fas fa-home"></i></legend>
+            <form enctype="multipart/form-data" method="post" action="">
+                {% csrf_token %}
+                <fieldset class="border p-2 m-2">
+                    {% bootstrap_form form %}
+                </fieldset>
+                <fieldset class="border p-2 m-2">
+                    {{ formsetE.management_form }}
 
-        <form enctype="multipart/form-data" method="post" action="">
-            {% csrf_token %}
+                    <legend class="lead"> Endereço <i class="fas fa-map-marker-alt"></i></legend>
+                    <div id="endereco" class="form-inline form-group">
+                        <div id="item-00" class="mb-2">
+                            <div id="form-busca" >
 
-            {% bootstrap_form form %}
+                            </div>
+                        </div>
+                        {% for item_form in formsetE %}
 
-            {{ formsetE.management_form }}
-            <legend class="lead"> Endereço</legend>
-            <div id="endereco" class="form-inline form-group">
-                {% for item_form in formsetE %}
+                            <div id="item-{{ forloop.counter0 }}" class="p-2">
 
-                    <div id="item-{{ forloop.counter0 }}">
-                        {% bootstrap_form item_form %}
+                                {#                                {% bootstrap_form item_form %}#}
+                                {% bootstrap_form item_form layout="horizontal" size="small" label_class="form-label col-md-3" %}
+                                <br/>
+                            </div>
+                        {% endfor %}
+
+
                     </div>
-                {% endfor %}
+                </fieldset>
+                <fieldset class="border p-2">
+                    {{ formset.management_form }}
 
-                <div id="item-1">
-                    <div id="form-busca">
+                    <legend class="lead"> Imagens <i class="fas fa-images"></i></legend>
+
+                    <div id="img" class="form-group">
+                        {% for item_order_form in formset %}
+
+                            <div id="item-{{ forloop.counter0 }}" class="m-4">
+
+                                {% bootstrap_form item_order_form show_label=False %}
+                                <hr>
+                            </div>
+                        {% endfor %}
 
                     </div>
+
+{#                    <a class="btn btn-info mt-2" id="add-item"><i class="fa fa-plus"></i> Add Item</a>#}
+                </fieldset>
+                <div class="buttons m-2">
+                    <a href="#" class="btn btn-danger pull-right "><i class="fa fa-times"></i> Cancelar</a>
+                    <button class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i class="fa fa-floppy-o"></i> Salvar
+                    </button>
                 </div>
 
-            </div>
-
-            {{ formset.management_form }}
-
-            <legend class="lead"> Imagens</legend>
-
-            <div id="order" class="form-inline form-group">
-                {% for item_order_form in formset %}
-
-                    <div id="item-{{ forloop.counter0 }}">
-                        <hr>
-                        {% bootstrap_form item_order_form %}
-                        <hr>
-                    </div>
-                {% endfor %}
-
-            </div>
-
-            <a class="btn btn-info" id="add-item"><i class="fa fa-plus"></i> Add Item</a>
-
-            <div class="form-inline buttons">
-                <a href="#" class="btn btn-warning pull-right"><i class="fa fa-times"></i> Cancelar</a>
-                <button class="btn btn-primary pull-right" value="Save"><i class="fa fa-floppy-o"></i> Salvar</button>
-            </div>
-
-        </form>
+            </form>
+        </fieldset>
     </div>
     <script type="text/babel" src="{% static 'js/cadastro_imovel_react.js' %}"></script>
+{#    <script type="text/html" id="item-order">#}
+{#        <div id="item-__prefix__" style="margin: 24px">#}
+{#            {{ formset.empty_form|crispy }}#}
+{#            {% bootstrap_form formset.empty_form show_label=False %}#}
+{#            <hr>#}
+{#        </div>#}
+{#    </script>#}
 {% endblock %}
