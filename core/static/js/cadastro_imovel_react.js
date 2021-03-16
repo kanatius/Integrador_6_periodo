@@ -259,17 +259,22 @@ class SelectWrapper extends React.Component {
     }
 
     render() {
+
+        const style = {
+            paddingLeft : 5
+        }
+
         return (
             <div>
                 <input type="text" required hidden name="cidade" id="input-cidade"/>
                 <input type="text" required hidden name="estado" id="input-estado"/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-12 col-md-12 col-lg-8">
+                        <div className="col-sm-12 col-md-12 col-lg-8" style={style}>
                             <label>Selecione a cidade</label>
                             <SelectCidade idSelectCidade={this.props.idSelectCidade} ref={this.selectCidadeRef}/>
                         </div>
-                        <div className="col-sm-12 col-md-12 col-lg-4">
+                        <div className="col-sm-12 col-md-12 col-lg-4" style={style}>
                             <label>Selecione o Estado</label>
                             <SelectEstado idSelectEstado={this.props.idSelectEstado}
                                           selectCidadeRef={this.selectCidadeRef}/>
