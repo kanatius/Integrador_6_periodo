@@ -31,21 +31,21 @@ class Cidade(models.Model):
 class Imovel(models.Model):
 
     TIPO_CHOICES = (
-        ("C", "Casa"),
-        ("A", "Apartamento"),
-        ("S", "Sobrado"),
-        ("K", "Kitnet"),
-        ("E", "Edícula"),
-        ("F", "Flat"),
+        ("Casa", "Casa"),
+        ("Apartamento", "Apartamento"),
+        ("Sobrado", "Sobrado"),
+        ("Kitnet", "Kitnet"),
+        ("Edícula", "Edícula"),
+        ("Flat", "Flat"),
     )
     STATUS_CHOICES = (
-        ("D", "Disponível"),
-        ("A", "Alugado"),
+        ("Disponível", "Disponível"),
+        ("Alugado", "Alugado"),
     )
 
     descricao = models.CharField(max_length=500, verbose_name="Descrição do seu imovel")
-    tipo = models.CharField(max_length=1, choices=TIPO_CHOICES, default="C")
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default="D")
+    tipo = models.CharField(max_length=100, choices=TIPO_CHOICES, default="Casa")
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES, default="Disponível")
     valor_mensal = models.IntegerField()
     proprietario = models.ForeignKey(Usuario, default=2, blank=False, null=False, on_delete=models.CASCADE)
 
