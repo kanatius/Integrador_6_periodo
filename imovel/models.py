@@ -41,7 +41,7 @@ class Imovel(models.Model):
         verbose_name_plural = "Imoveis"
 
     def __str__(self):
-        return self.tipo
+        return  str(self.id) + " - " + self.tipo
 
     def delete(self):
 
