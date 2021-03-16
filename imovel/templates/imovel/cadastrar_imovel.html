@@ -4,10 +4,7 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 {% block extrahead %}
-    <link href="{% static 'css/all.css' %}" rel="stylesheet">
-    <!--load all styles -->
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/login.css">
+<link href="{% static 'css/all.css' %}" rel="stylesheet">
 {% endblock %}
 
 {# Load CSS and JavaScript #}
@@ -18,88 +15,69 @@
 {% bootstrap_messages %}
 
 {% block page %}
-{#    <script>#}
-{#        $(document).ready(function () {#}
-{#            $("#add-item").click(function (ev) {#}
-{#                ev.preventDefault();#}
-{#                var count = $('#img').children().length;#}
-{#                var tmplMarkup = $("#item-order").html();#}
-{#                var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);#}
-{#                if (count < 6) {#}
-{#                    $("div#img").append(compiledTmpl);#}
-{##}
-{#                    // update form count#}
-{#                    $('#id_product-TOTAL_FORMS').attr('value', count + 1);#}
-{##}
-{#                    // some animate to scroll to view our new form#}
-{#                    $('html, body').animate({#}
-{#                        scrollTop: $("#add-item").position().top - 200#}
-{#                    }, 800);#}
-{#                }#}
-{#            });#}
-{#        });#}
-{#    </script>#}
 
-    <div class="container">
-        <fieldset class="border p-2">
+<div class="container">
+    <fieldset class="p-2">
         <legend class='text-center'>Cadastre seu Imovel <i class="fas fa-home"></i></legend>
-            <form enctype="multipart/form-data" method="post" action="">
-                {% csrf_token %}
-                <fieldset class="border p-2 m-2">
-                    {% bootstrap_form form %}
-                </fieldset>
-                <fieldset class="border p-2 m-2">
-                    {{ formsetE.management_form }}
+        <form enctype="multipart/form-data" method="post" action="">
+            {% csrf_token %}
+            <fieldset class="border p-4 m-2">
+                <legend class="lead"> Dados Gerais</legend>
+                {% bootstrap_form form %}
+            </fieldset>
+            <fieldset class="border p-4 m-2">
+                {{ formsetE.management_form }}
 
-                    <legend class="lead"> Endereço <i class="fas fa-map-marker-alt"></i></legend>
-                    <div id="endereco" class="form-inline form-group">
-                        <div id="item-00" class="mb-2">
-                            <div id="form-busca" >
+                <legend class="lead"> Endereço <i class="fas fa-map-marker-alt"></i></legend>
+                <div id="endereco" class="form-inline form-group">
+                    <div id="item-00" class="mb-2">
+                        <div id="form-busca">
 
-                            </div>
                         </div>
-                        {% for item_form in formsetE %}
-
-                            <div id="item-{{ forloop.counter0 }}" class="p-2">
-
-                                {#                                {% bootstrap_form item_form %}#}
-                                {% bootstrap_form item_form layout="horizontal" size="small" label_class="form-label col-md-3" %}
-                                <br/>
-                            </div>
-                        {% endfor %}
-
-
                     </div>
-                </fieldset>
-                <fieldset class="border p-2">
-                    {{ formset.management_form }}
+                    {% for item_form in formsetE %}
 
-                    <legend class="lead"> Imagens <i class="fas fa-images"></i></legend>
+                    <div id="item-{{ forloop.counter0 }}" class="p-2">
 
-                    <div id="img" class="form-group">
-                        {% for item_order_form in formset %}
-
-                            <div id="item-{{ forloop.counter0 }}" class="m-4">
-
-                                {% bootstrap_form item_order_form show_label=False %}
-                                <hr>
-                            </div>
-                        {% endfor %}
-
+                        {#                                {% bootstrap_form item_form %}#}
+                        {% bootstrap_form item_form layout="horizontal" size="small" label_class="form-label col-md-3" %}
+                        <br />
                     </div>
+                    {% endfor %}
 
-{#                    <a class="btn btn-info mt-2" id="add-item"><i class="fa fa-plus"></i> Add Item</a>#}
-                </fieldset>
-                <div class="buttons m-2">
-                    <a href="#" class="btn btn-danger pull-right "><i class="fa fa-times"></i> Cancelar</a>
-                    <button class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i class="fa fa-floppy-o"></i> Salvar
-                    </button>
+
+                </div>
+            </fieldset>
+            <fieldset class="border p-4 m-2">
+                {{ formset.management_form }}
+
+                <legend class="lead"> Imagens <i class="fas fa-images"></i></legend>
+
+                <div id="img" class="form-group">
+                    {% for item_order_form in formset %}
+
+                    <div id="item-{{ forloop.counter0 }}" class="m-4">
+
+                        {% bootstrap_form item_order_form show_label=False %}
+                        <hr>
+                    </div>
+                    {% endfor %}
+
                 </div>
 
-            </form>
-        </fieldset>
-    </div>
-    <script type="text/babel" src="{% static 'js/cadastro_imovel_react.js' %}"></script>
+                {#                    <a class="btn btn-info mt-2" id="add-item"><i class="fa fa-plus"></i> Add Item</a>#}
+            </fieldset>
+            <div class="buttons m-2">
+                <a href="#" class="btn btn-danger pull-right "><i class="fa fa-times"></i> Cancelar</a>
+                <button class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i
+                        class="fa fa-floppy-o"></i> Cadastrar
+                </button>
+            </div>
+
+        </form>
+    </fieldset>
+</div>
+<script type="text/babel" src="{% static 'js/cadastro_imovel_react.js' %}"></script>
 {#    <script type="text/html" id="item-order">#}
 {#        <div id="item-__prefix__" style="margin: 24px">#}
 {#            {{ formset.empty_form|crispy }}#}
