@@ -30,9 +30,22 @@ class Cidade(models.Model):
 
 class Imovel(models.Model):
 
-    descricao = models.CharField(max_length=500)
-    tipo = models.CharField(max_length=55)
-    status = models.CharField(max_length=55)
+    TIPO_CHOICES = (
+        ("C", "Casa"),
+        ("A", "Apartamento"),
+        ("S", "Sobrado"),
+        ("K", "Kitnet"),
+        ("E", "Edícula"),
+        ("F", "Flat"),
+    )
+    STATUS_CHOICES = (
+        ("D", "Disponível"),
+        ("A", "Alugado"),
+    )
+
+    descricao = models.CharField(max_length=500, verbose_name="Descrição do seu imovel")
+    tipo = models.CharField(max_length=1, choices=TIPO_CHOICES, default="C")
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default="D")
     valor_mensal = models.IntegerField()
     proprietario = models.ForeignKey(Usuario, default=2, blank=False, null=False, on_delete=models.CASCADE)
 
@@ -71,8 +84,8 @@ class Endereco(models.Model):
     
     logradouro = models.CharField(max_length=255)
     bairro = models.CharField(max_length=255)
-    numero = models.IntegerField(null=True, blank=True)
-    ponto_de_referencia = models.CharField(max_length=55, null=True, blank=True)
+    numero = models.IntegerField(null=True, blank=True, verbose_name="Número")
+    ponto_de_referencia = models.CharField(max_length=255, null=True, blank=True)
     imovel = models.OneToOneField(Imovel, on_delete=models.CASCADE)
     cidade = models.ForeignKey(Cidade, on_delete=models.DO_NOTHING)
 

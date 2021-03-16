@@ -30,5 +30,5 @@ class EnderecoImovelForm(ModelForm):
     #     self.fields['extra_field'] = forms.TextField()
 
 
-ImagemFormSet = inlineformset_factory(Imovel, ImovelImagem, form=ImagemImovelForm)
-EnderecoFormSet = inlineformset_factory(Imovel, Endereco, form=EnderecoImovelForm, extra=1)
+ImagemFormSet = inlineformset_factory(Imovel, ImovelImagem, form=ImagemImovelForm, can_delete=False, extra=5)
+EnderecoFormSet = inlineformset_factory(Imovel, Endereco, form=EnderecoImovelForm, can_delete=False)
