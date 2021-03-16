@@ -122,7 +122,7 @@ section .section-title {
 }
 #btn-login {
   background-color: white;
-  color: #324c65 !important;
+  color: #004777 !important;
   font-size: 13px;
   border: 0px;
   font-weight: bold;
@@ -166,11 +166,11 @@ section .section-title {
 }
 
 ul li .dropdown-item {
-  color: #324c65 !important;
+  color: #004777 !important;
 }
 
 ul li .dropdown-item:hover {
-  background-color: #324c65;
+  background-color: #004777;
   color: white !important;
 }
 
