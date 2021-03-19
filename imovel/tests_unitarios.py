@@ -68,7 +68,7 @@ class CidadeTestCase(TestCase):
     #teste de 2 cidades com o mesmo nome e estado
     def test_two_cities_same_ones(self):
         Cidade.objects.create(id=4, nome="Pau dos Ferros", estado_sigla="RN", estado="Rio Grande do Norte")
-        Cidade.objects.create(id=5, nome="Pau dos Ferros", estado_sigla="RN", estado="Rio Grande do Sul")
+        Cidade.objects.create(id=5, nome="Pau dos Ferros", estado_sigla="RN", estado="Rio Grande do Norte")
         
         pdf_amount = Cidade.objects.filter(nome="Pau dos Ferros").count()
 
