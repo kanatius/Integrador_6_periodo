@@ -1,6 +1,7 @@
 {# Load the tag library #}
 {% load static %}
 {% load bootstrap4 %}
+{% load socialaccount %}
 {% block extrahead %}
 <link href="{% static 'css/all.css' %}" rel="stylesheet">
 <!--load all styles -->
@@ -16,6 +17,8 @@
 {% bootstrap_messages %}
 
 {% block page %}
+
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
 <div class="container">
     <div class="row">
@@ -71,38 +74,39 @@
                         </div>
                         <div class="row">
                             <div class="col-8">
-                                {#                                    <div class="icheck-primary">#}
-                                {#                                        <input type="checkbox" id="remember">#}
-                                {#                                        <label for="remember">#}
-                                {#                                            Remember Me#}
-                                {#                                        </label>#}
-                                {#                                    </div>#}
+                                <p class="mb-1">
+                                    <a href="/accounts/reset_password/">Esqueci a minha senha!</a>
+                                </p>
+                                <p class="mb-0">
+                                    <span>Não tem uma conta?<a href="{% url 'accounts:cadastro' %}" class="text-center">
+                                            Registre-se</a></span>
+                                </p>
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                                <button type="submit" id="btn-entrar" class="btn btn-primary btn-block">Entrar</button>
                             </div>
                             <!-- /.col -->
                         </div>
-                    </form>
-                    <p class="mb-1">
-                        <a href="/accounts/reset_password/">Esqueci a minha senha!</a>
-                    </p>
-                    <p class="mb-0">
-                        <span>Não tem uma conta?<a href="{% url 'accounts:cadastro' %}" class="text-center"> Registre-se</a></span>
-                    </p>
                 </div>
+                <div class="card-body" style="padding-top: 0px;">
+                    <hr>
+                    <div class="col-12" style="display: flex; justify-content: center; margin-top: 10px">
+                        <div class="google-btn btn-primary">
+                            <div class="google-icon-wrapper">
+                                <img class="google-icon"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                            </div>
+                            <p class="btn-text"><b><a style="color: white;"
+                                        href="{% provider_login_url 'google' %}">Entrar com Google</a></b></p>
+                        </div>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-{#    <form action="" method="post">#}
-{#        {% csrf_token %}#}
-{#        {% bootstrap_field form.username %}#}
-{#        <button type="submit" class="btn btn-primary">#}
-{#            Submit#}
-{#        </button>#}
-{#    </form>#}
+</div>
 
 {% endblock %}
