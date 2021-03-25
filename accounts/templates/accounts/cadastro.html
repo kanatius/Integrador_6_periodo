@@ -1,9 +1,9 @@
 {% load static %}
 {% load bootstrap4 %}
-{% block extrahead %}
-    <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles -->
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/cadastro.css">
+{% block head %}
+<title>Cadastro</title>
+<link href="{% static 'css/all.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/cadastro.css">
 {% endblock %}
 
 {# Load CSS and JavaScript #}
@@ -15,125 +15,126 @@
 
 {% block page %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto card-div">
-                <div class="card card-signin my-5 shadow rounded-3">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto card-div">
+            <div class="card card-signin my-5 shadow rounded-3">
 
-                    <div class="card-body ">
-                        <div class="row justify-content-center px-3 mt-3 mb-1"><img id="logo-cadastro"
-                                                                                    src="{% static 'imagens/Alugaqui - Logo-01.png' %}">
-                        </div>
-                        <h5 class="card-title text-center font-weight-light mb-3">Faça seu Cadastro</h5>
-                        <form method="post">
-                            {% csrf_token %}
-
-                            {% if form.errors %}
-                                {% for field in form %}
-                                    {% for error in field.errors %}
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>{{ field.name|title }} {{ error|escape }}</strong>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-
-                                    {% endfor %}
-                                {% endfor %}
-                                {% for error in form.non_field_errors %}
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ error|escape }}</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Email" name="username"
-                                       id="id_username" required="">
-                                <p class="errorlist">{{ form.errors.email }}</p>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-envelope"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nome" name="nome" maxlength="45"
-                                       required="" id="id_nome">
-                                <p class="errorlist">{{ form.errors.nome }}</p>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-signature"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Telefone" name="telefone"
-                                       required="" id="id_telefone">
-                                <p class="errorlist">{{ form.errors.telefone }}</p>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-
-                                        <span class="fas fa-phone-alt"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Senha"
-                                       autocomplete="new-password" name="password1" required="" id="id_password1">
-
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Confirme sua senha"
-                                       name="password2" autocomplete="new-password" required="" id="id_password2">
-
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-8">
-
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-4">
-                                    <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                        </form>
-
-                        <p class="mb-0">
-                            <span>Já tem uma conta? <a href="{% url 'accounts:login' %}" class="text-center">Entrar</a></span>
-                        </p>
+                <div class="card-body ">
+                    <div class="row justify-content-center px-3 mt-3 mb-1"><img id="logo-cadastro"
+                            src="{% static 'imagens/Alugaqui - Logo-01.png' %}">
                     </div>
+                    <h5 class="card-title text-center font-weight-light mb-3">Faça seu Cadastro</h5>
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                        {% for field in form %}
+                        {% for error in field.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ field.name|title }} {{ error|escape }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ error|escape }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Email" name="username" id="id_username"
+                                required="">
+                            <p class="errorlist">{{ form.errors.email }}</p>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nome" name="nome" maxlength="45"
+                                required="" id="id_nome">
+                            <p class="errorlist">{{ form.errors.nome }}</p>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-signature"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Telefone" name="telefone" required=""
+                                id="id_telefone">
+                            <p class="errorlist">{{ form.errors.telefone }}</p>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+
+                                    <span class="fas fa-phone-alt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Senha" autocomplete="new-password"
+                                name="password1" required="" id="id_password1">
+
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Confirme sua senha"
+                                name="password2" autocomplete="new-password" required="" id="id_password2">
+
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+
+                    <p class="mb-0">
+                        <span>Já tem uma conta? <a href="{% url 'accounts:login' %}"
+                                class="text-center">Entrar</a></span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    {#    <form action="" method="post">#}
-    {#        {% csrf_token %}#}
-    {#        {% bootstrap_field form.username %}#}
-    {#        <button type="submit" class="btn btn-primary">#}
-    {#            Submit#}
-    {#        </button>#}
-    {#    </form>#}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $("#id_telefone").mask("(00) 0000-0000");
-    </script>
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        {% bootstrap_field form.username %}#}
+{#        <button type="submit" class="btn btn-primary">#}
+{#            Submit#}
+{#        </button>#}
+{#    </form>#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $("#id_telefone").mask("(00) 0000-0000");
+</script>
 {% endblock %}
