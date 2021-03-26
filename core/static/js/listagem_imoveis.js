@@ -33,21 +33,24 @@ class ListaImoveis extends React.Component {
 
         let href = "/imovel/detalhes/" + imovel.id;
 
-        return (
-            <div key={imovel.id} className="card col-lg-7">
-                <div className="card-img">
-                    <img src={urlImagem} className="card-img-top" alt="..." />
-                </div>
-                <div className="card-body">
-                    <h5 className="card-title"><b>{imovel.tipo}</b></h5>
-                    <p className="card-text"><b>{imovel.endereco.logradouro}, Nº {imovel.endereco.numero} - Bairro: {imovel.endereco.bairro}</b></p>
-                    <p>R$ {imovel.valor_mensal},00/mês</p>
-                    <p className="card-text">{imovel.descricao}</p>
-                </div>
-                <div className="card-footer">
-                    <small className="text-muted"><a href={href} target="_blank">Detalhes</a></small>
-                </div>
-            </div>);
+        if(imovel.status == "Disponível"){
+            return (
+                <div key={imovel.id} className="card col-lg-7">
+                    <div className="card-img">
+                        <img src={urlImagem} className="card-img-top" alt="..." />
+                    </div>
+                    <div className="card-body">
+                        <h5 className="card-title"><b>{imovel.tipo}</b></h5>
+                        <p className="card-text"><b>{imovel.endereco.logradouro}, Nº {imovel.endereco.numero} - Bairro: {imovel.endereco.bairro}</b></p>
+                        <p>R$ {imovel.valor_mensal},00/mês</p>
+                        <p className="card-text">{imovel.descricao}</p>
+                    </div>
+                    <div className="card-footer">
+                        <small className="text-muted"><a href={href} target="_blank">Detalhes</a></small>
+                    </div>
+                </div>)
+        };
+        return;
     }
 
     carregarMais() {

@@ -84,6 +84,8 @@ def detalhes_page(request, id_imovel):
     if imovel is None:
         return redirect("core:index")
 
+    if imovel.status != "Disponível":
+        return redirect("core:index")
 
     proprietario = imovel.proprietario
 
