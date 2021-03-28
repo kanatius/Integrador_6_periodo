@@ -1,5 +1,6 @@
+from django.db import transaction
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -138,3 +139,36 @@ class ListImovelUser(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Imovel.objects.filter(proprietario=self.request.user)
         return queryset
+
+
+class UpdateImovelUser(UpdateView):
+    model = Imovel
+    fields = ('descricao', 'valor_mensal')
+    template_name = 'imovel/editar_imovel.html'
+    success_url = reverse_lazy('imovel:imoveis_user')
+
+    def get_context_data(self, **kwargs):
+        data = super(UpdateImovelUser, self).get_context_data(**kwargs)
+        if self.request.POST:
+            data['formset'] = ImagemFormSet(self.request.POST, self.request.FILES, instance=self.object)
+            data['formsetE'] = EnderecoFormSet(self.request.POST, instance=self.object)
+        else:
+            data['formset'] = ImagemFormSet(instance=self.object)
+            data['formsetE'] = EnderecoFormSet(instance=self.object)
+
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['formset']
+        formsetE = context['formsetE']
+
+        with transaction.atomic():
+            self.object = form.save()
+            if formset.is_valid() and formsetE.is_valid():
+                formsetE.instance = self.object
+                formset.instance = self.object
+                formset.save()
+                formsetE.save()
+
+        return super(UpdateImovelUser, self).form_valid(form)

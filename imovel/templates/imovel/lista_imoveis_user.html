@@ -38,7 +38,7 @@
                                     <p class="">
 {#                                        <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i> Info</button>#}
 {#                                        <button class="btn btn-info">Ver Detalher</button>#}
-                                        <button class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</button>
+                                        <a href="{% url 'imovel:editar_imovel' imovel.id %}" class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</a>
                                         <button class="btn btn-primary" style="background-color: #004777"> Ver Detalhes</button>
                                         <button class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</button>
                                     </p>

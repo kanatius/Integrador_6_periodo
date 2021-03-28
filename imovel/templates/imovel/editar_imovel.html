@@ -19,7 +19,7 @@
 
 <div class="container">
     <fieldset class="p-2">
-        <legend class='text-center'>Cadastre seu Imovel <i class="fas fa-home"></i></legend>
+        <legend class='text-center'>Atualize os dados do seu Imovel <i class="fas fa-home"></i></legend>
         <form enctype="multipart/form-data" method="post" action="">
             {% csrf_token %}
             <fieldset class="border p-4 m-2">
@@ -31,11 +31,7 @@
 
                 <legend class="lead"> Endereço do Imóvel <i class="fas fa-map-marker-alt"></i></legend>
                 <div id="endereco" class="form-inline form-group">
-                    <div id="item-00" class="mb-2">
-                        <div id="form-busca">
 
-                        </div>
-                    </div>
                     {% for item_form in formsetE %}
 
                     <div id="item-{{ forloop.counter0 }}" class="p-2">
@@ -67,20 +63,13 @@
                 <a class="btn btn-success mt-2" id="add-item"><i class="fa fa-plus"></i> Adicionar foto</a>
             </fieldset>
             <div class="buttons m-2">
-                <a href="{% url 'core:index' %}" class="btn btn-danger pull-right "><i class="fa fa-times"></i> Cancelar</a>
-                <button type="submit" class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i
-                        class="fa fa-floppy-o"></i> Cadastrar
+                <a href="{% url 'imovel:imoveis_user' %}" class="btn btn-danger pull-right "><i class="fa fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i class="fas fa-redo-alt"></i> Atualizar
                 </button>
             </div>
         </form>
     </fieldset>
 </div>
-<script type="text/babel" src="{% static 'js/cadastro_imovel_react.js' %}"></script>
-{#    <script type="text/html" id="item-order">#}
-{#        <div id="item-__prefix__" style="margin: 24px">#}
-{#            {{ formset.empty_form|crispy }}#}
-{#            {% bootstrap_form formset.empty_form show_label=False %}#}
-{#            <hr>#}
-{#        </div>#}
-{#    </script>#}
+<script type="text/babel" src="{% static 'js/edit_react.js' %}"></script>
+
 {% endblock %}
