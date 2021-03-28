@@ -1,6 +1,6 @@
 from django.db import transaction
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView, ListView, UpdateView, DetailView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -172,3 +172,11 @@ class UpdateImovelUser(UpdateView):
                 formsetE.save()
 
         return super(UpdateImovelUser, self).form_valid(form)
+
+
+class DeleteImovel(DeleteView):
+    model = Imovel
+    template_name = 'imovel/delete_imovel.html'
+    success_url = reverse_lazy('imovel:imoveis_user')
+
+

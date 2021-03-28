@@ -34,7 +34,7 @@ div [class^="col-"]{
   left: 0;
   transform: scale3d(0, 0, 1);
   transition: transform .3s ease-out 0s;
-  background: rgba(255, 255, 255, 0.1);
+  /*background: rgba(255, 255, 255, 0.1);*/
   content: '';
   pointer-events: none;
 }

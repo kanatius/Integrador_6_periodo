@@ -1,5 +1,7 @@
 {% extends 'basepage.html' %}
+{% include 'imovel/delete_imovel.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% load bootstrap4 %}
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -11,6 +13,7 @@
 
 {% endblock %}
 {% block page %}
+
     <div class="container">
 
         {% for imovel in imovel_list %}
@@ -36,11 +39,15 @@
                                         <span>N° {{ imovel.endereco.numero }}</span>
                                     </p>
                                     <p class="">
-{#                                        <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i> Info</button>#}
-{#                                        <button class="btn btn-info">Ver Detalher</button>#}
-                                        <a href="{% url 'imovel:editar_imovel' imovel.id %}" class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</a>
-                                        <button class="btn btn-primary" style="background-color: #004777"> Ver Detalhes</button>
-                                        <button class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</button>
+
+                                        <a href="{% url 'imovel:editar_imovel' imovel.id %}"
+                                           class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</a>
+                                        <button class="btn btn-primary" style="background-color: #004777"> Ver
+                                            Detalhes
+                                        </button>
+
+                                        <a href="{% url 'imovel:deletar_imovel' imovel.id %}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</a>
+
                                     </p>
                                 </div>
                             </div>
@@ -48,17 +55,8 @@
                     </div>
                 </div>
             </div>
-            {#--------------------------#}
-            {##}
-            {#            <p>{{ imovel.tipo }}</p>#}
-            {#            <p>{{ imovel.descrição }}</p>#}
-            {#            <p>{{ imovel.status }}</p>#}
-            {#            <p>{{ imovel.valor_mensal }}</p>#}
-            {#            <p>{{ imovel.proprietario }}</p>#}
-            {#            <p>{{ imovel.endereco.bairro }}</p>#}
-            {#            <p>{{ imovel.endereco.cidade }}</p>#}
-            {#            <p>{{ imovel.endereco.numero }}</p>#}
-            {#            <p>{{ imovel.imagens.all.0.uri_arquivo }}</p>#}
+
         {% endfor %}
+
     </div>
 {% endblock %}
