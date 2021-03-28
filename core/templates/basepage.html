@@ -66,20 +66,9 @@
                     <a class="nav-link" aria-current="page" href="/">Procurar Imóveis</a>
                 </li>
                 {% if user.is_authenticated %}
-                    {#                    <li class="nav-item">#}
-                    {#                        <a class="nav-link" aria-current="page" href="{% url "imovel:cadastrarImovel" %}">Cadastrar#}
-                    {#                            imoveis</a>#}
-                    {#                    </li>#}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-expanded="false">Gerenciar Imóveis</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{% url "imovel:cadastrarImovel" %}"><i class="fas fa-plus"></i> Novo
-                                    Imóvel </a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-th-list"></i> Meus Imóveis</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url "imovel:cadastrarImovel" %}">Cadastrar
+                            Imóveis</a>
                     </li>
                 {% endif %}
             </ul>
@@ -94,8 +83,8 @@
                             Minha Conta
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Perfil</a></li>
-                            <li><a class="dropdown-item" href="#!">Meus Imóveis</a></li>
+                            <li><a class="dropdown-item" href="#!"><i class="far fa-user-circle"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="{% url "imovel:imoveis_user" %}"><i class="far fa-list-alt"></i> Meus Imóveis</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

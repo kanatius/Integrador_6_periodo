@@ -1,0 +1,64 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block head %}
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/imoveis_list_user.css' %}">
+
+{% endblock %}
+{% block page %}
+    <div class="container">
+
+        {% for imovel in imovel_list %}
+            {#--------------------------#}
+            <div class="row justify-content-md-center">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img
+                                        src="{% static imovel.imagens.all.0.uri_arquivo %}"
+                                        alt="..."
+                                        class="img-fluid"
+                                        style="height: 205px;width: 300px"
+                                />
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ imovel.tipo }}</h5>
+                                    <p class="card-text">
+                                        {{ imovel.endereco.cidade }},
+                                        {{ imovel.endereco.bairro }}
+                                        <span>N° {{ imovel.endereco.numero }}</span>
+                                    </p>
+                                    <p class="">
+{#                                        <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i> Info</button>#}
+{#                                        <button class="btn btn-info">Ver Detalher</button>#}
+                                        <button class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</button>
+                                        <button class="btn btn-primary" style="background-color: #004777"> Ver Detalhes</button>
+                                        <button class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#--------------------------#}
+            {##}
+            {#            <p>{{ imovel.tipo }}</p>#}
+            {#            <p>{{ imovel.descrição }}</p>#}
+            {#            <p>{{ imovel.status }}</p>#}
+            {#            <p>{{ imovel.valor_mensal }}</p>#}
+            {#            <p>{{ imovel.proprietario }}</p>#}
+            {#            <p>{{ imovel.endereco.bairro }}</p>#}
+            {#            <p>{{ imovel.endereco.cidade }}</p>#}
+            {#            <p>{{ imovel.endereco.numero }}</p>#}
+            {#            <p>{{ imovel.imagens.all.0.uri_arquivo }}</p>#}
+        {% endfor %}
+    </div>
+{% endblock %}

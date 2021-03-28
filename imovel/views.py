@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -128,3 +128,13 @@ def enviar_email_prop(request, id_imovel):
         link_return = "/imovel/detalhes/" + str(imovel.id) + "?success_message=" + success_message + "#div-email"
 
         return HttpResponseRedirect(link_return)
+
+
+class ListImovelUser(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Imovel
+    template_name = 'imovel/lista_imoveis_user.html'
+
+    def get_queryset(self):
+        queryset = Imovel.objects.filter(proprietario=self.request.user)
+        return queryset
