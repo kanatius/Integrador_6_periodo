@@ -67,6 +67,7 @@ class CriarImovel(LoginRequiredMixin, CreateView):
             return self.form_invalid(form, formset, formsetE)
 
     def form_valid(self, form, formset, formsetE):
+        messages.success(self.request,'Imóvel cadastrado com sucesso!')
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form, formset, formsetE):

@@ -111,9 +111,8 @@
 
 
 <div class="container" id="sheet">
+    {% include 'messages.html' %}
     {% block page %}
-
-
 
 
     {% endblock %}
@@ -183,6 +182,13 @@
     </div>
 </section>
 <!-- ./Footer -->
+<script>
+    setTimeout(function (){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    },2000)
+</script>
 </body>
 
 </html>
