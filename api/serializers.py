@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from imovel.models import Imovel, Endereco, Cidade, ImovelImagem
+from accounts.models import Usuario
 from integrador_6_periodo.settings import IMOVEIS_IMAGENS_DIR, STATIC_URL, MEDIA_ROOT
 
 
@@ -28,11 +29,17 @@ class ImagemSerializer(serializers.ModelSerializer):
     def get_image_link(self, instance):
         return STATIC_URL +  instance.uri_arquivo.name
 
+class PropietarioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Usuario
+        fields = ('nome', "sobrenome", "email", "telefone")
+
 class ImovelSerializer(serializers.ModelSerializer):
     endereco = EnderecoSerializer(read_only=True)
-    
+    proprietario = PropietarioSerializer(read_only=True)
     imagens = ImagemSerializer(many=True)
     
     class Meta:
         model = Imovel
-        fields = ('id', 'tipo', 'descricao', 'status', 'valor_mensal', 'endereco', 'imagens')
+        fields = ('id', 'tipo', 'descricao', 'status', 'valor_mensal', 'endereco', 'imagens', "proprietario")
