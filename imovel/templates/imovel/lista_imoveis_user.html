@@ -15,7 +15,25 @@
 {% block page %}
 
     <div class="container">
-
+        <div class="row justify-content-md-center mb-5">
+            <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-center align-items-center"><h3 class="align-self-start">Seus Imoveis <i class="fas fa-home"></i></h3></div>
+            <div class="col-md-4 col-sm-8 search-div">
+                <form method="GET" id="search-form">
+                    <div class="row">
+                        <div class="input-group col-md-4">
+                            <input class="form-control" type="search" id="search" name="search"
+                                   placeholder="Digite o tipo de imóvel para buscar..." value="{{ request.GET.search }}">
+                            <span class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"  id="search-btn">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
         {% for imovel in imovel_list %}
             {#--------------------------#}
             <div class="row justify-content-md-center">
@@ -59,4 +77,17 @@
         {% endfor %}
 
     </div>
+
+    <script>
+        $(document).ready(function () {
+
+            var searchBtn = $('#search-btn');
+            var searchForm = $('#search-form');
+
+            $(searchBtn).on('click', function () {
+                searchForm.submit();
+            });
+
+        });
+    </script>
 {% endblock %}

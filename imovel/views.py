@@ -138,7 +138,12 @@ class ListImovelUser(LoginRequiredMixin, ListView):
     template_name = 'imovel/lista_imoveis_user.html'
 
     def get_queryset(self):
-        queryset = Imovel.objects.filter(proprietario=self.request.user)
+        search = self.request.GET.get('search')
+        queryset = None
+        if search:
+            queryset = Imovel.objects.filter(proprietario=self.request.user, tipo__icontains=search)
+        else:
+            queryset = Imovel.objects.filter(proprietario=self.request.user)
         return queryset
 
 
