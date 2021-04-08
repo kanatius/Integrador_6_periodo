@@ -13,7 +13,6 @@
 
 {% endblock %}
 {% block page %}
-
     <div class="container">
         <div class="row justify-content-md-center mb-5">
             <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-center align-items-center"><h3 class="align-self-start">Seus Imoveis <i class="fas fa-home"></i></h3></div>
@@ -38,6 +37,7 @@
             {#--------------------------#}
             <div class="row justify-content-md-center">
                 <div class="col-md-8">
+
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -54,15 +54,19 @@
                                     <p class="card-text">
                                         {{ imovel.endereco.cidade }},
                                         {{ imovel.endereco.bairro }}
-                                        <span>N° {{ imovel.endereco.numero }}</span>
+                                        <span>N° {{ imovel.endereco.numero }}</span><br>
+                                        {% if imovel.status == 'Disponível' or imovel.status == 'Disponivel'%}
+                                            <span class="badge alert-success">Disponível</span>
+                                        {% elif imovel.status == 'Alugado' %}
+                                            <span class="badge alert-warning">Alugado</span>
+                                        {% endif %}
+
                                     </p>
+
                                     <p class="">
 
                                         <a href="{% url 'imovel:editar_imovel' imovel.id %}"
                                            class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</a>
-                                        <button class="btn btn-primary" style="background-color: #004777"> Ver
-                                            Detalhes
-                                        </button>
 
                                         <a href="{% url 'imovel:deletar_imovel' imovel.id %}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</a>
 

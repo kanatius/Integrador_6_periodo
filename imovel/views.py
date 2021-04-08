@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from imovel.forms import ImovelForm, ImagemFormSet, EnderecoFormSet
-from imovel.models import Imovel, ImovelImagem, Cidade
+from imovel.models import Imovel, ImovelImagem, Cidade,Endereco
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from api.serializers import ImovelSerializer
 from django.core.mail import send_mail
@@ -149,18 +149,28 @@ class ListImovelUser(LoginRequiredMixin, ListView):
 
 class UpdateImovelUser(UpdateView):
     model = Imovel
-    fields = ('descricao', 'valor_mensal')
+    fields = ('descricao', 'valor_mensal','status')
     template_name = 'imovel/editar_imovel.html'
     success_url = reverse_lazy('imovel:imoveis_user')
 
     def get_context_data(self, **kwargs):
         data = super(UpdateImovelUser, self).get_context_data(**kwargs)
         if self.request.POST:
+            cidade = self.request.POST.get("cid")
+            estado = self.request.POST.get("est")
+            cidadeE = Cidade.objects.get(nome=cidade, estado_sigla=estado)
+
             data['formset'] = ImagemFormSet(self.request.POST, self.request.FILES, instance=self.object)
             data['formsetE'] = EnderecoFormSet(self.request.POST, instance=self.object)
+            data['cidade'] = cidadeE
+
+
         else:
+            end = Endereco.objects.get(imovel=self.object)
+            cidadeE = Cidade.objects.get(nome=end.cidade)
             data['formset'] = ImagemFormSet(instance=self.object)
             data['formsetE'] = EnderecoFormSet(instance=self.object)
+            data['cidade'] = cidadeE
 
         return data
 
@@ -168,11 +178,14 @@ class UpdateImovelUser(UpdateView):
         context = self.get_context_data()
         formset = context['formset']
         formsetE = context['formsetE']
+        cid = context['cidade']
 
         with transaction.atomic():
             self.object = form.save()
             if formset.is_valid() and formsetE.is_valid():
+
                 formsetE.instance = self.object
+                formsetE.instance = cid
                 formset.instance = self.object
                 formset.save()
                 formsetE.save()

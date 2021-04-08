@@ -31,8 +31,8 @@
 
                 <legend class="lead"> Endereço do Imóvel <i class="fas fa-map-marker-alt"></i></legend>
                 <div id="endereco" class="form-inline form-group">
-                    <input id="cid" value="Alexandria" hidden>
-                    <input id="est" value="RN" hidden>
+                    <input id="cid" name="cid" value="{{ cidade.nome }}" hidden>
+                    <input id="est" name="est" value="{{ cidade.estado_sigla }}" hidden>
                 </div>
                 <div>
                     <span id="form-cidade"></span>
@@ -40,43 +40,42 @@
                 </div>
                 {% for item_form in formsetE %}
 
-                <div id="item-{{ forloop.counter0 }}" class="p-2">
+                    <div id="item-{{ forloop.counter0 }}" class="p-2">
 
-                    {#                                {% bootstrap_form item_form %}#}
-                    {% bootstrap_form item_form layout="horizontal" size="small" label_class="form-label col-md-3" %}
-                    <br />
-                </div>
+                        {#                                {% bootstrap_form item_form %}#}
+                        {% bootstrap_form item_form layout="horizontal" size="small" label_class="form-label col-md-3" %}
+                        <br/>
+                    </div>
                 {% endfor %}
 
 
-</div>
-</fieldset>
-<fieldset class="border p-4 m-2">
-    {{ formset.management_form }}
+            </fieldset>
+            <fieldset class="border p-4 m-2">
+                {{ formset.management_form }}
 
-    <legend class="lead"> Imagens <i class="fas fa-images"></i></legend>
+                <legend class="lead"> Imagens <i class="fas fa-images"></i></legend>
 
-    <div id="img" class="form-group">
-        {% for item_order_form in formset %}
+                <div id="img" class="form-group">
+                    {% for item_order_form in formset %}
 
-        <div id="item-{{ forloop.counter0 }}" class="m-4 img-field" hidden="true">
+                        <div id="item-{{ forloop.counter0 }}" class="m-4 img-field" hidden="true">
 
-            {% bootstrap_form item_order_form show_label=False %}
-            <hr>
-        </div>
-        {% endfor %}
-    </div>
-    <a class="btn btn-success mt-2" id="add-item"><i class="fa fa-plus"></i> Adicionar foto</a>
-</fieldset>
-<div class="buttons m-3 p-2">
-    <a href="{% url 'imovel:imoveis_user' %}" class="btn btn-danger pull-right "><i class="fa fa-times"></i>
-        Cancelar</a>
-    <button type="submit" class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i
-            class="fas fa-redo-alt"></i> Atualizar
-    </button>
-</div>
-</form>
-</fieldset>
+                            {% bootstrap_form item_order_form show_label=False %}
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="btn btn-success mt-2" id="add-item"><i class="fa fa-plus"></i> Adicionar foto</a>
+            </fieldset>
+            <div class="buttons m-3 p-2">
+                <a href="{% url 'imovel:imoveis_user' %}" class="btn btn-danger pull-right "><i class="fa fa-times"></i>
+                    Cancelar</a>
+                <button type="submit" class="btn btn-primary pull-right " value="Save" style="margin-right: 20px"><i
+                        class="fas fa-redo-alt"></i> Atualizar
+                </button>
+            </div>
+        </form>
+    </fieldset>
 </div>
 <script type="text/babel" src="{% static 'js/edit_react.js' %}"></script>
 
