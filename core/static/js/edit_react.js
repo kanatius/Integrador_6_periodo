@@ -170,11 +170,13 @@ class SelectEstado extends React.Component {
 
     onchangeEstado = (option) => {
 
-        let nomeCidadePadrao = "a"
+        $("#est").val(option.value);
+
+        let nomeCidadePadrao = "a";
 
         linkRoot = "/api/" + option.value + "/cidades/" + nomeCidadePadrao + "?limit=20";
 
-        var cidades = []
+        var cidades = [];
         //variável para acessar o select
         //dentro da função done o this muda
         var this_ = this;
@@ -204,7 +206,7 @@ class SelectEstado extends React.Component {
             options={
                 estadoOptions
             }
-            value = {this.value}
+            defaultValue = {this.value}
             placeholder={"Digite o nome do estado"}
         />;
     }
@@ -257,6 +259,7 @@ class SelectCidade extends React.Component {
 
     onChange(option) {
         $("#input-cidade").val(option.label);
+        $("#cid").val(option.value);
     }
 
     updateOptions(options) {
@@ -276,7 +279,7 @@ class SelectCidade extends React.Component {
             onInputChange={this.onInputChange}
             onChange={this.onChange}
             options={this.state.options}
-            value={{
+            defaultValue={{
                 value: document.getElementById("cid").value, 
                 label: document.getElementById("cid").value
             }}
