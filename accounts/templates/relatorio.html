@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+</head>
+<body>
+    
+    <h1>Relatório dos imóveis de {{usuario.getFullName}}</h1>
+
+    <h3><b>Quantidade de imóveis:</b> {{qtd_im_alug|add:qtd_im_disp}}</h3>
+    <h3><b>Quantidade de imóveis Alugados:</b> {{qtd_im_alug}}</h3>
+    <h3><b>Quantidade de imóveis Disponíveis para locação:</b> {{qtd_im_disp}}</h3>
+    <h3><b>Total recebido por mês de imóveis alugados:</b> R$ {{val_receb_mes}},00</h3>
+    <h3><b>Total não recebido por mês de imóveis não alugados:</b> R$ {{val_n_receb_mes}},00</h3>
+    <h3><b>Total valor de todos os imóveis:</b> R$ {{val_receb_mes|add:val_n_receb_mes}},00</h3>
+
+
+</body>
+
+    <style type="text/css">
+
+        h3, b{
+            font-weight: normal;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</html>
