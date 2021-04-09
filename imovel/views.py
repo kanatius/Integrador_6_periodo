@@ -12,8 +12,7 @@ from django.core.mail import send_mail
 from integrador_6_periodo.settings import EMAIL_HOST_USER
 from django.contrib import messages
 
-
-# Create your views here.
+from django.http import HttpResponse
 
 class CriarImovel(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
