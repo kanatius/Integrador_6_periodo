@@ -8,90 +8,99 @@
 {% bootstrap_javascript jquery='full' %}
 
 {% block head %}
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/imoveis_list_user.css' %}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/imoveis_list_user.css' %}">
 
 {% endblock %}
 {% block page %}
-    <div class="container">
-        <div class="row justify-content-md-center mb-5">
-            <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-center align-items-center"><h3 class="align-self-start">Seus Imoveis <i class="fas fa-home"></i></h3></div>
-            <div class="col-md-4 col-sm-8 search-div">
-                <form method="GET" id="search-form">
-                    <div class="row">
-                        <div class="input-group col-md-4">
-                            <input class="form-control" type="search" id="search" name="search"
-                                   placeholder="Digite o tipo de imóvel para buscar..." value="{{ request.GET.search }}">
-                            <span class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"  id="search-btn">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div class="container">
+    <div class="row justify-content-md-center mb-5">
+        <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-center align-items-center">
+            <h3 class="align-self-start">Seus Imoveis <i class="fas fa-home"></i></h3>
         </div>
-        <hr>
-        {% for imovel in imovel_list %}
-            {#--------------------------#}
-            <div class="row justify-content-md-center">
-                <div class="col-md-8">
+        <div class="col-md-4 col-sm-8 search-div">
+            <form method="GET" id="search-form">
+                <div class="row">
+                    <div class="input-group col-md-4">
+                        <input class="form-control" type="search" id="search" name="search"
+                            placeholder="Digite o tipo de imóvel para buscar..." value="{{ request.GET.search }}">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="search-btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-11"></div>
+        <div class="col-sm-1" style="text-align: center; font-size: 12px; font-weight: bold">
+            Gerar Relatório<br>
+            <a target="_blank" href="{% url 'accounts:gerar_relatorio' %}">
+                <img src="/static/imagens/outline_assignment_black_24dp.png" style="width: 35px;" alt="Gerar Relatório"
+                    srcset="">
+            </a></div>
 
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img
-                                        src="{% static imovel.imagens.all.0.uri_arquivo %}"
-                                        alt="..."
-                                        class="img-fluid"
-                                        style="height: 205px;width: 300px"
-                                />
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ imovel.tipo }}</h5>
-                                    <p class="card-text">
-                                        {{ imovel.endereco.cidade }},
-                                        {{ imovel.endereco.bairro }}
-                                        <span>N° {{ imovel.endereco.numero }}</span><br>
-                                        {% if imovel.status == 'Disponível' or imovel.status == 'Disponivel'%}
-                                            <span class="badge alert-success">Disponível</span>
-                                        {% elif imovel.status == 'Alugado' %}
-                                            <span class="badge alert-warning">Alugado</span>
-                                        {% endif %}
+    </div>
+    {% for imovel in imovel_list %}
+    {#--------------------------#}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
 
-                                    </p>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{% static imovel.imagens.all.0.uri_arquivo %}" alt="..." class="img-fluid"
+                            style="height: 205px;width: 300px" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ imovel.tipo }}</h5>
+                            <p class="card-text">
+                                {{ imovel.endereco.cidade }},
+                                {{ imovel.endereco.bairro }}
+                                <span>N° {{ imovel.endereco.numero }}</span><br>
+                                {% if imovel.status == 'Disponível' or imovel.status == 'Disponivel'%}
+                                <span class="badge alert-success">Disponível</span>
+                                {% elif imovel.status == 'Alugado' %}
+                                <span class="badge alert-warning">Alugado</span>
+                                {% endif %}
 
-                                    <p class="">
+                            </p>
 
-                                        <a href="{% url 'imovel:editar_imovel' imovel.id %}"
-                                           class="btn btn-primary btn_edit"><i class="far fa-edit"></i> Editar</a>
+                            <p class="">
 
-                                        <a href="{% url 'imovel:deletar_imovel' imovel.id %}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</a>
+                                <a href="{% url 'imovel:editar_imovel' imovel.id %}" class="btn btn-primary btn_edit"><i
+                                        class="far fa-edit"></i> Editar</a>
 
-                                    </p>
-                                </div>
-                            </div>
+                                <a href="{% url 'imovel:deletar_imovel' imovel.id %}" class="btn btn-danger"><i
+                                        class="far fa-trash-alt"></i> Excluir</a>
+
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-
-        {% endfor %}
-
+        </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
+    {% endfor %}
 
-            var searchBtn = $('#search-btn');
-            var searchForm = $('#search-form');
+</div>
 
-            $(searchBtn).on('click', function () {
-                searchForm.submit();
-            });
+<script>
+    $(document).ready(function () {
 
+        var searchBtn = $('#search-btn');
+        var searchForm = $('#search-form');
+
+        $(searchBtn).on('click', function () {
+            searchForm.submit();
         });
-    </script>
+
+    });
+</script>
 {% endblock %}
