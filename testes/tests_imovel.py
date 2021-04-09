@@ -1,6 +1,7 @@
 from django.test import TestCase
 from imovel.models import Cidade, Imovel
 from accounts.models import Usuario
+import unittest
 
 class ImovelTestCase(TestCase):
 
@@ -48,3 +49,7 @@ class ImovelTestCase(TestCase):
         amount = Imovel.objects.filter(proprietario = ImovelTestCase.proprietario).count()
 
         self.assertEquals(amount, 2)
+    
+    @unittest.expectedFailure
+    def test_no_proprietario(self):  
+        Imovel.objects.create(id=1, descricao="3 quartos, sala e cozinha", tipo="Apartamento", status="Disponível", valor_mensal=500, proprietario=None)

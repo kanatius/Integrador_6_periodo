@@ -88,7 +88,7 @@ MIDDLEWARE += [
 
 
 CACHE_MIDDLEWARE_ALIAS = "default"
-CACHE_MIDDLEWARE_SECONDS = 120 #2 minutps
+CACHE_MIDDLEWARE_SECONDS = 120 #2 minutos
 CACHE_MIDDLEWARE_KEY_PREFIX = "" #multiple django cached applications
 # ---------- CACHE CONFIG ----------#
 
