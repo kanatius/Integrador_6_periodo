@@ -30,6 +30,8 @@ $("#add-item").on("click", function(){
 });
 
 
+<<<<<<< HEAD
+=======
 const estadoOptions = [{
     value: "AC",
     label: "Acre"
@@ -339,3 +341,4 @@ ReactDOM.render(<SelectWrapper
 
 
 
+>>>>>>> 9b99c69b3d11c99c242f889477020876cabb9782
