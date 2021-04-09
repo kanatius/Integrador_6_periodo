@@ -1,18 +1,11 @@
 from django.contrib.auth.views import LoginView
-<<<<<<< HEAD
-from django.http import HttpResponseRedirect
+from accounts.models import Usuario
+from imovel.models import Imovel
+from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from accounts.models import Usuario
-from django.contrib import messages
-
 from accounts.forms import CreateUserForm, ChangeUserForm, UpdatePerfil
-
-=======
-from django.views.generic import CreateView
-from accounts.forms import CreateUserForm
-from imovel.models import Imovel
+from django.contrib.auth.mixins import LoginRequiredMixin
 # ------- REDIRECT/RESPONSE -------#
 from django.urls import reverse_lazy
 from django.http import HttpResponse
@@ -23,7 +16,7 @@ from io import BytesIO
 from xhtml2pdf import pisa
 from django.template.loader import get_template
 # ------- RELATÓRIO -------#
->>>>>>> 547c19160d3725eb0c57e7df2014513d781190bf
+
 
 class Login(LoginView):
     template_name = 'accounts/login.html'
@@ -36,7 +29,6 @@ class Cadastro(CreateView):
     template_name = 'accounts/cadastro.html'
 
 
-<<<<<<< HEAD
 class UpdateUsuario(UpdateView, LoginRequiredMixin):
     login_url = reverse_lazy('login')
     model = Usuario
@@ -57,7 +49,6 @@ class ProfilePage(TemplateView):
         context['requested_profile_id'] = self.kwargs.get('pk')
 
         return context
-=======
 def gerar_relatorio(request):
 
     if not request.user.is_authenticated:
@@ -98,4 +89,3 @@ def gerar_relatorio(request):
 
 
     return HttpResponseRedirect(request, "/")
->>>>>>> 547c19160d3725eb0c57e7df2014513d781190bf
