@@ -30,14 +30,14 @@
                 {{ formsetE.management_form }}
 
                 <legend class="lead"> Endereço do Imóvel <i class="fas fa-map-marker-alt"></i></legend>
-                <div id="endereco" class="form-inline form-group">
-                    <input id="cid" name="cid" value="{{ cidade.nome }}" hidden>
-                    <input id="est" name="est" value="{{ cidade.estado_sigla }}" hidden>
-                </div>
-                <div>
-                    <span id="form-cidade"></span>
-                    <span id="form-estado"></span>
-                </div>
+{#                <div id="endereco" class="form-inline form-group">#}
+{#                    <input id="cid" name="cid" value="{{ cidade.nome }}" hidden>#}
+{#                    <input id="est" name="est" value="{{ cidade.estado_sigla }}" hidden>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <span id="form-cidade"></span>#}
+{#                    <span id="form-estado"></span>#}
+{#                </div>#}
                 {% for item_form in formsetE %}
 
                     <div id="item-{{ forloop.counter0 }}" class="p-2">

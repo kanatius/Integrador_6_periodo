@@ -75,6 +75,11 @@ class ImovelImagem(models.Model):
         verbose_name = "Imovel imagem"
         verbose_name_plural = "Imovel imagens"
 
+    def save(self):
+        if not ImovelImagem.objects.filter(imovel=self.imovel).count() >= 5:
+            # cadastra somente até 5 imagens
+            super(ImovelImagem, self).save()
+
     def delete(self):
         os.remove(self.uri_arquivo.path) #remove arquivo da pasta
         super(ImovelImagem, self).delete()

@@ -156,21 +156,21 @@ class UpdateImovelUser(UpdateView):
     def get_context_data(self, **kwargs):
         data = super(UpdateImovelUser, self).get_context_data(**kwargs)
         if self.request.POST:
-            cidade = self.request.POST.get("cid")
-            estado = self.request.POST.get("est")
-            cidadeE = Cidade.objects.get(nome=cidade, estado_sigla=estado)
+            # cidade = self.request.POST.get("react-select-2-input")
+            # estado = self.request.POST.get("react-select-3-input")
+            # cidadeE = Cidade.objects.get(nome=cidade, estado_sigla=estado)
 
             data['formset'] = ImagemFormSet(self.request.POST, self.request.FILES, instance=self.object)
             data['formsetE'] = EnderecoFormSet(self.request.POST, instance=self.object)
-            data['cidade'] = cidadeE
+            # data['cidade'] = cidadeE
 
 
         else:
-            end = Endereco.objects.get(imovel=self.object)
-            cidadeE = Cidade.objects.get(nome=end.cidade)
+            # end = Endereco.objects.get(imovel=self.object)
+            # cidadeE = Cidade.objects.get(nome=end.cidade)
             data['formset'] = ImagemFormSet(instance=self.object)
             data['formsetE'] = EnderecoFormSet(instance=self.object)
-            data['cidade'] = cidadeE
+            # data['cidade'] = cidadeE
 
         return data
 
@@ -178,14 +178,11 @@ class UpdateImovelUser(UpdateView):
         context = self.get_context_data()
         formset = context['formset']
         formsetE = context['formsetE']
-        cid = context['cidade']
 
         with transaction.atomic():
             self.object = form.save()
             if formset.is_valid() and formsetE.is_valid():
-
                 formsetE.instance = self.object
-                formsetE.instance = cid
                 formset.instance = self.object
                 formset.save()
                 formsetE.save()
