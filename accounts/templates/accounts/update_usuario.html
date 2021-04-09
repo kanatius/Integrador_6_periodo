@@ -1,0 +1,62 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block head %}
+<title>Cadastro</title>
+<link href="{% static 'css/all.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/cadastro.css">
+{% endblock %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block page %}
+
+    <div class="container">
+        <div class="row">
+{#            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">#}
+                <div class="container my-5 shadow rounded-3">
+
+                    {#                    <div class="row justify-content-center px-3 mt-3 mb-1"><img id="logo-cadastro"#}
+                    {#                            src="{% static 'imagens/Alugaqui - Logo-01.png' %}">#}
+                    {#                    </div>#}
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% bootstrap_form form %}
+                        <div class="row">
+                            <div class="col-8">
+
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-4 m-5">
+                                <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+                                <a type="button" class="btn btn-warning btn-block" href="{% url 'core:index' %}">Cancelar</a>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+
+                </div>
+{#            </div>#}
+        </div>
+    </div>
+
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        {% bootstrap_field form.username %}#}
+{#        <button type="submit" class="btn btn-primary">#}
+{#            Submit#}
+{#        </button>#}
+{#    </form>#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $("#id_telefone").mask("(00) 0000-0000");
+</script>
+{% endblock %}

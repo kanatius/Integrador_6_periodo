@@ -1,0 +1,53 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block head %}
+<title>Perfil</title>
+<link href="{% static 'css/all.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/cadastro.css">
+{% endblock %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+{% block page %}
+
+    <div class="container">
+        {% if user.is_authenticated and user.id == requested_profile_id %}
+
+            <div class="container p-5">
+                <div class="row">
+
+                    <div class="col-md-6 img">
+                        <img src="{% static 'imagens/2189.jpg' %}"
+                             alt="" class="img-rounded"  style="width: 200px">
+                    </div>
+                    <div class="col-md-6 details" style="border-left:3px solid #ded4da;">
+                        <div class="pull-right">
+                            <a class="btn btn-outline-secondary btn-sm" href="{% url "accounts:editar" user.id %}">Editar
+                                <i class="fas fa-cog" ></i>
+                            </a>
+
+                        </div>
+                        <blockquote>
+                            <h5>{{ user.nome }}</h5>
+                            <small><cite title="Source Title">Chicago, United States of America <i
+                                    class="icon-map-marker"></i></cite></small>
+                        </blockquote>
+                        <p style="font-size:15px;font-weight:bold;">
+                            {{ user.email }} <br>
+                            {{ user.telefone }} <br>
+                            June 18, 1990
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}

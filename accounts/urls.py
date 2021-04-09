@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
-from accounts.views import Login, Cadastro
+from accounts.views import Login, Cadastro, UpdateUsuario, ProfilePage
 
 app_name = 'accounts'
 
@@ -9,6 +9,8 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('cadastro/', Cadastro.as_view(), name="cadastro"),
+    path('editUser/<int:pk>', UpdateUsuario.as_view(), name="editar"),
+    path('perfil/<int:pk>', ProfilePage.as_view(), name="perfil"),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html",success_url=reverse_lazy('accounts:password_reset_done')),
          name="reset_password"),
